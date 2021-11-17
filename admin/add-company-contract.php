@@ -77,8 +77,8 @@ if ($_SESSION['usertype'] != 'admin') {
 
 				<div class="flex p-4">
 					<div class="w-3/4 bg-blue-200 rounded-l border-r border-red-800 p-4">
-						<p class="font-bold">Client Information</p>
-						<form action="contractinsert.php" method="POST" enctype="multipart/form-data">
+						<p class="font-bold">Company Information</p>
+						<form action="company-contract/insert.php" method="POST" enctype="multipart/form-data">
 							<div class="w-3/4 flex-wrap gap-2 bg-blue-200 rounded-l  p-4">
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Company Name</p>
