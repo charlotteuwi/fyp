@@ -82,7 +82,7 @@ if ($_SESSION['usertype'] != 'admin') {
 							<div class="w-3/4 flex-wrap gap-2 bg-blue-200 rounded-l  p-4">
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Company Name</p>
-									<input class="w-full  px-2 shadow rounded px-1 py-2" type="text" name="client_name" required="" placeholder="Company Name">
+									<input class="w-full  px-2 shadow rounded px-1 py-2" type="text" name="company_name" required="" placeholder="Company Name">
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">TIN Number</p>
@@ -98,7 +98,7 @@ if ($_SESSION['usertype'] != 'admin') {
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Phone Number</p>
-									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" name="phone_client" required="" required="0700000000" placeholder="0700000000">
+									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" name="phone_number" required="" required="0700000000" placeholder="0700000000">
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Address</p>
@@ -124,7 +124,7 @@ if ($_SESSION['usertype'] != 'admin') {
 						</div>
 						<div class="w-full mt-2">
 							<p class="text-xs mb-1">Contract Document</p>
-							<input type="file" name="photo" id="file">
+							<input type="file" name="document" id="document">
 						</div>
 						
 						<div class="w-full mt-2">
@@ -140,7 +140,7 @@ if ($_SESSION['usertype'] != 'admin') {
 						
 						<div class="w-full mt-2">
 							<p class="text-xs mb-1">Password</p>
-							<input class="w-full shadow rounded px-1 py-2" type="text" name="password" required="" placeholder="Password">
+							<input class="w-full shadow rounded px-1 py-2" type="password" name="password" required="" placeholder="Password">
 						</div>
 					</div>
 
