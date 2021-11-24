@@ -63,7 +63,10 @@
                                 <th class="p-2"> Contract ID </th>
                                 <th class="p-2"> Company Name </th>
                                 <th class="p-2"> Rem .Days </th>
+<<<<<<< HEAD
                                 <th class="p-2"> Status </th>
+=======
+>>>>>>> 567c434fb216ba1b3b8e152cb9b60da5ae80e6d5
                                 <th class="p-2" colspan="2"> Actions </th>
                             </tr>
 
@@ -79,8 +82,13 @@
                                     <td><?php echo $array[1]; ?></td>
                                     <td><?php echo $array[2]; ?></td>
                                     <td><?php echo $array[3]; ?></td>
+<<<<<<< HEAD
                                     <td ><a href="update-company-contract-form.php?id=<?php echo $array['id']; ?>"><i class="fas fa-user-edit"></i></a></td>
                                     
+=======
+                                    <td><a href=\"editart.php?id=$row[id]\">edit</a></td>
+                                    <td><a href=\"deleteart.php?id=$row[id]\"onClick=\"return (are you sure want to)\">delete</td>
+>>>>>>> 567c434fb216ba1b3b8e152cb9b60da5ae80e6d5
                                 </tr>
 
                             <?php } ?>
