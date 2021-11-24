@@ -26,13 +26,13 @@ if ($_SESSION['usertype'] != 'admin') {
 		<div class=" flex items-center justify-between text-2xl w-full bg-white h-16 py-2 px-4 shadow">
 			<div class="font-bold">ECAS </div>
 			<div class="font-light"> Admin </div>
-			<div> <img class="h-12" src="img/logo.png"> </div>
+			<div> <img class="h-12" src="../resources/img/logo.png"> </div>
 		</div>
 		<!-----navigations & contents -->
 		<div class="flex">
 			<div class="bg-gray-900 w-1/4 py-10 ">
 				<div class="text-gray-100 font-light flex-wrap gap-1/2">
-					<a href="adminpage.php">
+					<a href="index.php">
 						<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 				cusror-pointer border-b border-red-800 shadow-lg">
 							<p><i class="fas fa-tachometer-alt"></i> Dashboard</p>
@@ -56,7 +56,7 @@ if ($_SESSION['usertype'] != 'admin') {
 						</div>
 					</a>
 
-					<a href="settings.php">
+					<a href="changepassword.php">
 						<div class="py-4 px-5 bg-gray-800 text-white mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 					cusror-pointer border-b border-red-800 shadow-lg">
 							<p><i class="fas fa-user-cog"></i> Settings</p>
