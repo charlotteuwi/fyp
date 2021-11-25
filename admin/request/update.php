@@ -12,33 +12,45 @@ if ($_SESSION['usertype'] != 'admin') {
     header('Location: ../../index.php?msg=You are not the Company');
     exit;
 }
-
+?>
+<p>Pending Request </p>
+<?php
 include_once('../../resources/connection.php');
 
-$contract_id=$_GET['contract_id'];
-$action=$_GET['action'];
+$contract_id=$_POST['contract_id'];
+$manager=$_POST['manager'];
+$phone_number=$_POST['phone_number'];
+$action=$_POST['action'];
+$approve=$_POST['status'];
+$date=$_POST['date'];
 
-if($action == 'approve'){
+if(isset($_POST['approve'])){
+   
+    $sql=mysqli_query($con, "INSERT INTO `requestsanswers` (contract_id, manager, phone_number, action, status, date) VALUES('$contract_id','$manager',$phone_number,'$action','approved','$date')")or die(mysqli_error($con));
 
-    echo $action;
-    //query
-    $sql=mysqli_query($con, "UPDATE requests SET status='Approved' WHERE contract_id='$contract_id'")or die(mysqli_error($con));
+    //query delete 
+    $sql1=mysqli_query($con, "DELETE FROM `requests` WHERE contract_id='$contract_id'");
 
-    if($sql){
+    if($sql && $sql1){
+        header('Location: ../../notification.php?notification=REQUESTS DELETED HERE');    
+        exit;
+    }
+
+}
+if(isset($_POST['reject'])){
+
+    //echo $action;
+    //query insert
+    $sql=mysqli_query($con, "INSERT INTO `requestsanswers` (contract_id, manager, phone_number, action, status, date) VALUES('$contract_id','$manager',$phone_number,'$action','Rejected','$date')")or die(mysqli_error($con));
+
+    //query delete 
+    $sql1=mysqli_query($con, "DELETE FROM `requests` WHERE contract_id='$contract_id'");
+
+    if($sql && $sql1){
         header('Location: ../../notification.php?notification=REQUESTS STATUS CHANGED');
     
         exit;
     }
 
 }
-if(isset($_POST['Reject'])){
-    //query
-    $sql=mysqli_query($con, "UPDATE requests SET status='Rejected' WHERE contract_id='HVCZ1T4D7'")or die(mysqli_error($con));
-
-    if($sql){
-        header('Location: ../../notification.php?notification=REQUESTS STATUS CHANGED');
-    
-        exit;
-    }
-
-}
+   
