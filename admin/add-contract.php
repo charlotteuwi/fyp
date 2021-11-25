@@ -53,12 +53,12 @@ if ($_SESSION['usertype'] != 'admin') {
 							<p><i class="fas fa-file-alt"></i></p>
 							<p class="ml-2"> Reports</p>
 						</div>
-						<a href="#">
-							<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+						<a href="view_request.php">
+                            <div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 			        cusror-pointer border-b border-red-800 shadow-lg">
-								<p><i class="fas fa-comments"></i> Comments </p>
-							</div>
-						</a>
+                                <p><i class="fas fa-comments"></i> Requests </p>
+                            </div>
+                        </a>
 						<a href="changepassword.php">
 							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 								<p><i class="fas fa-user-cog"></i></p>

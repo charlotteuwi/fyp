@@ -54,8 +54,6 @@ if ($_SESSION['usertype'] != 'company') {
 						</div>
 					</a>
 				</div>
-
-
 			</div>
 			<?php
 			$contract_id = $_SESSION['contract_id'];
