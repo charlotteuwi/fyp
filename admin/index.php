@@ -1,4 +1,5 @@
 <?php
+include_once('../resources/connection.php');
 // We need to use sessions, so you should always start sessions using the below code.
 session_start();
 // If the user is not logged in redirect to the login page...
@@ -78,7 +79,17 @@ if ($_SESSION['usertype'] != 'admin') {
 				<div class="bg-gray-200 flex rounded">
 					<div class="flex-wrap p-2 rounded w-1/3">
 						<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
-							3000
+
+							<?php
+							$query = "SELECT count(id) as 'allcontracts'  from companycontracts";
+							$result = mysqli_query($con, $query);
+
+							while ($array = mysqli_fetch_array($result)) {
+								echo $array['allcontracts'] ?? 0;
+							}
+							?>
+
+
 						</div>
 						<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
 							All Contracts
@@ -86,7 +97,16 @@ if ($_SESSION['usertype'] != 'admin') {
 					</div>
 					<div class="flex-wrap p-2 rounded w-1/3 ">
 						<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
-							1550
+
+
+							<?php
+							$query = "SELECT count(id) as 'activecontracts' from companycontracts where status='ACTIVE'";
+							$result = mysqli_query($con, $query);
+
+							while ($array = mysqli_fetch_array($result)) {
+								echo $array['activecontracts'] ?? 0;
+							}
+							?>
 						</div>
 						<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
 							Active Contracts
@@ -96,18 +116,75 @@ if ($_SESSION['usertype'] != 'admin') {
 				<div class="bg-gray-200 flex rounded">
 					<div class="flex-wrap p-2 rounded w-1/3">
 						<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
-							3
+
+
+							<?php
+							$query = "SELECT count(id) as 'canceled' from companycontracts where status='CANCELED'";
+							$result = mysqli_query($con, $query);
+
+							while ($array = mysqli_fetch_array($result)) {
+								echo $array['canceled'] ?? 0;
+							}
+							?>
+
 						</div>
 						<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
 							canceled
 						</div>
 					</div>
+
 					<div class="flex-wrap p-2 rounded w-1/3 ">
 						<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
-							5
+
+
+							<?php
+							$query = "SELECT count(id) as 'expired' from companycontracts where status='EXPIRED'";
+							$result = mysqli_query($con, $query);
+
+							while ($array = mysqli_fetch_array($result)) {
+								echo $array['expired'] ?? 0;
+							}
+							?>
 						</div>
 						<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
 							Expiring this week
+						</div>
+					</div>
+				</div>
+				<div class="bg-gray-200 flex rounded">
+					<div class="flex-wrap p-2 rounded w-1/3">
+						<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
+							<?php
+							$query = "SELECT count(id) as 'status' from requests where status='PENDING'";
+							$result = mysqli_query($con, $query);
+
+							while ($array = mysqli_fetch_array($result)) {
+								echo $array['status'] ?? 0;
+							}
+							?>
+
+
+
+						</div>
+						<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
+							requests
+						</div>
+					</div>
+
+					<div class="flex-wrap p-2 rounded w-1/3 ">
+						<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
+
+							<?php
+							$query = "SELECT count(id) as 'action' from requestsanswers ";
+							$result = mysqli_query($con, $query);
+
+							while ($array = mysqli_fetch_array($result)) {
+								echo $array['action'] ?? 0;
+							}
+							?>
+						</div>
+						<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
+							answer Requests
 						</div>
 					</div>
 				</div>

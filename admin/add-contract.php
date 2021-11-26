@@ -93,18 +93,19 @@ if ($_SESSION['usertype'] != 'admin') {
 
 			<div class="h-200 w-full py-8 mt-32 flex items-center justify-center">
                         <table class="w-full" cellspacing="10" border="2">
-                            <tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="3">
+                            <tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="4">
                                 <th class="p-2"> Id </th>
                                 <th class="p-2"> Contract ID </th>
                                 <th class="p-2"> Company Name </th>
                                 <th class="p-2"> Rem .Days </th>
-                                <th class="p-2" colspan="2"> Actions </th>
+								<th class="p-2"> Status </th>
+                                <th class="p-2"> Actions </th> 
                             </tr>
 
                             <?php
                             include_once('../resources/connection.php');
 
-                            $query = "SELECT id, contract_id ,company_name, end_date from companycontracts"; // Fetch all the records from the table address
+                            $query = "SELECT id, contract_id ,company_name, end_date,status from companycontracts"; // Fetch all the records from the table address
                             $result = mysqli_query($con, $query);
 
                             while ($array = mysqli_fetch_array($result)) { ?>
@@ -113,8 +114,9 @@ if ($_SESSION['usertype'] != 'admin') {
                                     <td><?php echo $array[1]; ?></td>
                                     <td><?php echo $array[2]; ?></td>
                                     <td><?php echo $array[3]; ?></td>
-                                    <td><a href=\"editart.php?id=$row[id]\">edit</a></td>
-                                    <td><a href=\"deleteart.php?id=$row[id]\"onClick=\"return (are you sure want to)\">delete</td>
+									<td><?php echo $array[4]; ?></td>
+                                    <td ><a href="update-company-contract-form.php?id=<?php echo $array['id']; ?>"><i class="fas fa-user-edit"></i></a></td>
+                                    
                                 </tr>
 
                             <?php } ?>
