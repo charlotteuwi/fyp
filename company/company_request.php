@@ -71,6 +71,7 @@ include_once('../resources/connection.php');
                         <div class="w-full mt-2 flex items-center justify-center mb-8">
                             <input class="w-full rounded-lg text-white bg-red-600 shadow rounded px-1 py-2" type="submit" name="update_information" value="update_information" class="border-b border-gray-900 bg-red-600 rounded-full px-4 py-1 w-64 text-white">
                         </div>
+                        <p class="font-bold">Pending Request</p>
                         <?php
 
                         $contract_id = $_SESSION['contract_id'];
@@ -90,7 +91,7 @@ include_once('../resources/connection.php');
                                 <input type="hidden" name="contract_id" value="<?php echo $contract_id; ?>">
                                 <input type="hidden" name="manager" value="<?php echo $manager; ?>">
                                 <input type="hidden" name="phone_number" value="<?php echo $phone_number; ?>">
-                            
+
                         <?php
                             }
                         }
@@ -98,7 +99,7 @@ include_once('../resources/connection.php');
                     </form>
                     <table>
                         <tr>
-                            
+
                             <td class="p-4 ml-4">Contract_Id </td>
                             <td class="p-4 ml-4">Manager </td>
                             <td class="p-4 ml-4">Phone_Number </td>
@@ -109,6 +110,48 @@ include_once('../resources/connection.php');
                         </tr>
                         <?php
                         if ($stmt = $con->prepare('SELECT contract_id, manager,phone_number,action, status, date FROM requests WHERE contract_id = ?')) {
+                            // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
+                            $stmt->bind_param('s', $contract_id);
+                            $stmt->execute();
+                            // Store the result so we can check if the account exists in the database.
+                            $stmt->store_result();
+                            if ($stmt->num_rows > 0) {
+                                $stmt->bind_result($contract_id, $manager, $phone_number, $action, $status, $date);
+                                $stmt->fetch();
+                        ?>
+                                <tr>
+
+
+                                    <td class="p-4 ml-4"><?php echo $contract_id; ?> </td>
+                                    <td class="p-4 ml-4"><?php echo $manager; ?> </td>
+                                    <td class="p-4 ml-4"><?php echo $phone_number; ?> </td>
+                                    <td class="p-4 ml-4"><?php echo $action; ?> </td>
+                                    <td class="p-4 ml-4"><?php echo $status; ?> </td>
+                                    <td class="p-4 ml-4"><?php echo $date; ?> </td>
+
+
+                                </tr>
+                        <?php
+                            }
+                        }
+                        ?>
+
+                    </table>
+
+                    <p class="font-bold">Requests Answers</p>
+                    <table>
+                        <tr>
+
+                            <td class="p-4 ml-4">Contract_Id </td>
+                            <td class="p-4 ml-4">Manager </td>
+                            <td class="p-4 ml-4">Phone_Number </td>
+                            <td class="p-4 ml-4">action </td>
+                            <td class="p-4 ml-4">status </td>
+                            <td class="p-4 ml-4">date </td>
+
+                        </tr>
+                        <?php
+                        if ($stmt = $con->prepare('SELECT contract_id, manager,phone_number,action, status, date FROM requestsanswers WHERE contract_id = ?')) {
                             // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
                             $stmt->bind_param('s', $contract_id);
                             $stmt->execute();
