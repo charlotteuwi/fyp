@@ -87,6 +87,7 @@ if ($_SESSION['usertype'] != 'admin') {
 						<th class="p-2"> Actions</th>
 						<th class="p-2"> Status </th>
 						<th class="p-2"> Date </th>
+						<th class="p-2"> Request Type </th>
 						<th class="p-2" colspan="2"> Response </th>
 					</tr>
 
@@ -100,31 +101,21 @@ if ($_SESSION['usertype'] != 'admin') {
 
 						<form method="POST" action="request/update.php">
 
-							<input type="hidden" name="contract_id" value="<?php echo $array[1] //contract_id; 
-																			?>">
-							<input type="hidden" name="manager" value="<?php echo $array[2] //contract_id; 
-																		?>">
-							<input type="hidden" name="phone_number" value="<?php echo $array[3] //contract_id; 
-																			?>">
-							<input type="hidden" name="action" value="<?php echo $array[4] //contract_id; 
-																		?>">
-							<input type="hidden" name="status" value="<?php echo $array[5] //contract_id; 
-																		?>">
-							<input type="hidden" name="date" value="<?php echo $array[6] //contract_id; 
-																	?>">
+							<input type="hidden" name="contract_id" value="<?php echo $array[1]; //contract_id?>">
+							<input type="hidden" name="manager" value="<?php echo $array[2]; //Manager?>">
+							<input type="hidden" name="phone_number" value="<?php echo $array[3]; //Phone Number ?>">
+							<input type="hidden" name="action" value="<?php echo $array[4]; //action ?>">
+							<input type="hidden" name="status" value="<?php echo $array[5]; //status?>">
+							<input type="hidden" name="date" value="<?php echo $array[6]; //date?>">
+							<input type="hidden" name="usertype" value="<?php echo $array[7]; //Request Type?>">
 							<tr>
-								<td><?php echo $array[1] //contract_id; 
-									?></td>
-								<td><?php echo $array[2]; //manager
-									?></td>
-								<td><?php echo $array[3]; //phone_number
-									?></td>
-								<td><?php echo $array[4]; //action
-									?></td>
-								<td><?php echo $array[5]; //status
-									?></td>
-								<td><?php echo $array[6]; //date
-									?></td>
+								<td><?php echo $array[1]; //contract_id; ?></td>
+								<td><?php echo $array[2]; //manager?></td>
+								<td><?php echo $array[3]; //phone_number?></td>
+								<td><?php echo $array[4]; //action?></td>
+								<td><?php echo $array[5]; //status?></td>
+								<td><?php echo $array[6]; //date?></td>
+								<td><?php echo $array[7]; //Request Type?></td>
 								<td><button type="submit" name="approve" value="">Approve</button></td>
 								<td><button type="submit" name="reject" value="">Reject</button></td>
 							</tr>

@@ -22,7 +22,9 @@ $manager=$_POST['manager'];
 $phone_number=$_POST['phone_number'];
 $action=$_POST['action'];
 $approve=$_POST['status'];
+$usertype=$_POST['usertype'];
 $date=$_POST['date'];
+
 
 if(isset($_POST['approve'])){
    
@@ -36,10 +38,15 @@ if(isset($_POST['approve'])){
 
     if($action == 'cancel'){
 
-        $sql=mysqli_query($con, "UPDATE companycontracts set status='cancel' where contract_id='$contract_id'");
+        if($usertype=='company'){
+            $sql2=mysqli_query($con, "UPDATE companycontracts set status='cancel' where contract_id='$contract_id'");
+        } elseif($usertype=='user'){
+            $sql2=mysqli_query($con, "UPDATE usercontracts set status='cancel' where contract_id='$contract_id'");
+        }
+        
     }
 
-    if($sql && $sql1){
+    if($sql && $sql1 && $sql2){
         header('Location: ../../notification.php?notification=REQUESTS DELETED HERE');    
         exit;
     }
