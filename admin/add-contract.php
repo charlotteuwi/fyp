@@ -76,7 +76,7 @@ if ($_SESSION['usertype'] != 'admin') {
 
 <div class="flex-wrap">
 			<div class="h-200 w-3/4 p-2">
-				<div class="flex-wrap w-1/3 items-center justify-center">
+				<div class="flex-wrap w-full items-center justify-center">
 					<a href="add-company-contract.php">
 						<div class="items-center justify-center hover:bg-red-800  flex px-10 py-30 bg-gray-900 h-20 rounded text-white">
 							Add Company Contract
@@ -91,8 +91,8 @@ if ($_SESSION['usertype'] != 'admin') {
 				</div>
 			</div>
 
-			<div class="h-200 w-full py-8 mt-32 flex items-center justify-center">
-                        <table class="w-full" cellspacing="10" border="2">
+			<div class="h-200 w-full px-16 py-10 mt-8 flex-wrap items-center justify-center">
+                        <table class="w-full" cellspacing="10">
                             <tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="4">
                                 <th class="p-2"> Id </th>
                                 <th class="p-2"> Contract ID </th>

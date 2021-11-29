@@ -31,10 +31,19 @@ if(isset($_POST['approve'])){
     //query delete 
     $sql1=mysqli_query($con, "DELETE FROM `requests` WHERE contract_id='$contract_id'");
 
+    //if action == 'cancel'
+    //query for updating in company contracts set status = 'cancel' where contract id = contractod
+
+    if($action == 'cancel'){
+
+        $sql=mysqli_query($con, "UPDATE companycontracts set status='cancel' where contract_id='$contract_id'");
+    }
+
     if($sql && $sql1){
         header('Location: ../../notification.php?notification=REQUESTS DELETED HERE');    
         exit;
     }
+
 
 }
 if(isset($_POST['reject'])){
