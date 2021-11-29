@@ -65,9 +65,10 @@ if ($_SESSION['usertype'] != 'admin') {
 						</a>
 				</div>
 			</div>
+			
 			<div class="w-full items-center justify-center">
 				<div class="flex justify-between border-b border-gray-900 bg-red-600 px-2 py-4 w-full text-white">
-					<p class="font-bold">Form to Add New contracts </p>
+					<p class="font-bold">Form to Add New Company contracts </p>
 					<Div class=" bg-red-600 rounded px-4 py-1 w-100 text-white">
 						<a href="add-contract.php">
 							<<< BACK 
@@ -79,8 +80,10 @@ if ($_SESSION['usertype'] != 'admin') {
 					<div class="w-3/4 bg-blue-200 rounded-l border-r border-red-800 p-4">
 						<p class="font-bold">Company Information</p>
 						<form action="company-contract/insert.php" method="POST" enctype="multipart/form-data">
-							<div class="w-3/4 flex-wrap gap-2 bg-blue-200 rounded-l  p-4">
-								<div class="w-full mt-2">
+							
+						<div class="w-3/4 flex-wrap gap-2 bg-blue-200 rounded-l  p-4">
+								
+							<div class="w-full mt-2">
 									<p class="text-xs mb-1">Company Name</p>
 									<input class="w-full  px-2 shadow rounded px-1 py-2" type="text" name="company_name" required="" placeholder="Company Name">
 								</div>

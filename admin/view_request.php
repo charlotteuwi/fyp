@@ -48,36 +48,38 @@ if ($_SESSION['usertype'] != 'admin') {
 
 
 						</div>
-					</a>
+						</a>
 					<a href="#">
 						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 							<p><i class="fas fa-file-alt"></i></p>
 							<p class="ml-2"> Reports</p>
 						</div>
-					</a>
-					<a href="view_request.php">
-						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+						</a>
+						<a href="view_request.php">
+							<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 			        cusror-pointer border-b border-red-800 shadow-lg">
-							<p><i class="fas fa-comments"></i> Requests </p>
-						</div>
-					</a>
-					<a href="changepassword.php">
-						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-							<p><i class="fas fa-user-cog"></i></p>
-							<p class="ml-2"> Settings</p>
-						</div>
-					</a>
-					<a href="../logout.php">
-						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-							<p><i class="fas fa-user-cog"></i></p>
-							<p class="ml-2"> Logout</p>
-						</div>
-					</a>
+								<p><i class="fas fa-comments"></i> Requests </p>
+							</div>
+						</a>
+						<a href="changepassword.php">
+							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+								<p><i class="fas fa-user-cog"></i></p>
+								<p class="ml-2"> Settings</p>
+							</div>
+						</a>
+						<a href="../logout.php">
+							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+								<p><i class="fas fa-user-cog"></i></p>
+								<p class="ml-2"> Logout</p>
+							</div>
+						</a>
 				</div>
 			</div>
-
-			<div class="h-200 w-full py-8 mt-32 flex items-center justify-center">
-				<table class="w-full" cellspacing="10" border="2">
+			
+			<div class="h-200 w-full px-16 mt-8 flex-wrap items-center justify-center">
+				
+			<table class="w-full" cellspacing="10">
+			<p class="font-bold">Pending Requests</p>
 					<tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="6">
 						<th class="p-2"> Contract ID </th>
 						<th class="p-2"> Manager </th>
@@ -95,23 +97,107 @@ if ($_SESSION['usertype'] != 'admin') {
 					$result = mysqli_query($con, $query);
 
 					while ($array = mysqli_fetch_array($result)) { ?>
-						<tr>
-							<td><?php echo $array[1]; ?></td>
-							<td><?php echo $array[2]; ?></td>
-							<td><?php echo $array[3]; ?></td>
-							<td><?php echo $array[4]; ?></td>
-							<td><?php echo $array[5]; ?></td>
-							<td><?php echo $array[6]; ?></td>
-							<td><a href="request/update.php?contract_id=<?php echo $array[1]; ?>&action=approve">Approve</a></td>
-							<td><a href="request/update.php?contract_id=<?php echo $array[1]; ?>&action=reject">Reject</a></td>
-						</tr>
+
+						<form method="POST" action="request/update.php">
+
+							<input type="hidden" name="contract_id" value="<?php echo $array[1] //contract_id; 
+																			?>">
+							<input type="hidden" name="manager" value="<?php echo $array[2] //contract_id; 
+																		?>">
+							<input type="hidden" name="phone_number" value="<?php echo $array[3] //contract_id; 
+																			?>">
+							<input type="hidden" name="action" value="<?php echo $array[4] //contract_id; 
+																		?>">
+							<input type="hidden" name="status" value="<?php echo $array[5] //contract_id; 
+																		?>">
+							<input type="hidden" name="date" value="<?php echo $array[6] //contract_id; 
+																	?>">
+							<tr>
+								<td><?php echo $array[1] //contract_id; 
+									?></td>
+								<td><?php echo $array[2]; //manager
+									?></td>
+								<td><?php echo $array[3]; //phone_number
+									?></td>
+								<td><?php echo $array[4]; //action
+									?></td>
+								<td><?php echo $array[5]; //status
+									?></td>
+								<td><?php echo $array[6]; //date
+									?></td>
+								<td><button type="submit" name="approve" value="">Approve</button></td>
+								<td><button type="submit" name="reject" value="">Reject</button></td>
+							</tr>
+
+						</form>
 
 			</div>
 		<?php
 					}
 		?>
 		</div>
+
+
 	</div>
-	</boby>
+
+	<div class="h-200 w-full py-8 mt-2 flex items-center justify-center">
+		<table class="w-full" cellspacing="10">
+		<p class="font-bold">approved Requests</p>
+			<tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="6">
+				<th class="p-2"> Contract ID </th>
+				<th class="p-2"> Manager </th>
+				<th class="p-2"> Phone_Number </th>
+				<th class="p-2"> Actions</th>
+				<th class="p-2"> Status </th>
+				<th class="p-2"> Date </th>
+			</tr>
+
+			<?php
+			include_once('../resources/connection.php');
+
+			$query = "SELECT * from requestsanswers"; // Fetch all the records from the table address
+			$result = mysqli_query($con, $query);
+
+			while ($array = mysqli_fetch_array($result)) { ?>
+
+				<form method="POST" action="request/update.php">
+
+					<input type="hidden" name="contract_id" value="<?php echo $array[1] //contract_id; 
+																	?>">
+					<input type="hidden" name="manager" value="<?php echo $array[2] //contract_id; 
+																?>">
+					<input type="hidden" name="phone_number" value="<?php echo $array[3] //contract_id; 
+																	?>">
+					<input type="hidden" name="action" value="<?php echo $array[4] //contract_id; 
+																?>">
+					<input type="hidden" name="status" value="<?php echo $array[5] //contract_id; 
+																?>">
+					<input type="hidden" name="date" value="<?php echo $array[6] //contract_id; 
+															?>">
+					<tr>
+						<td><?php echo $array[1] //contract_id; 
+							?></td>
+						<td><?php echo $array[2]; //manager
+							?></td>
+						<td><?php echo $array[3]; //phone_number
+							?></td>
+						<td><?php echo $array[4]; //action
+							?></td>
+						<td><?php echo $array[5]; //status
+							?></td>
+						<td><?php echo $array[6]; //date
+							?></td>
+					</tr>
+
+				</form>
+
+	</div>
+<?php
+			}
+?>
+</div>
+</div>
+
+</boby>
 
 </html>
