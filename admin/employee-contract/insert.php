@@ -67,7 +67,7 @@ if ($uploadedSuccess === true) {
     $registered_on = date("d-m-Y");
 
     $query = mysqli_query($con, "INSERT INTO `usercontracts` VALUES('','$contract_id','$employee_name', '$phone_number','$address','$description','$start_date','$end_date','$filename','ACTIVE','$registered_on')") or die(mysqli_error($con));
-    $security = mysqli_query($con, "INSERT INTO `users` VALUES('','$username','$password', 'employee', '$contract_id')") or die(mysqli_error($con));
+    $security = mysqli_query($con, "INSERT INTO `users` VALUES('','$username','$password', 'user', '$contract_id')") or die(mysqli_error($con));
 
     if ($query) {
         if ($security) {

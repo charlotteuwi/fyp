@@ -109,7 +109,7 @@
 							<input type="text" class="form-control" name="isco_supervisor" value="<?php echo $array['isco_supervisor']; ?>" required="true">
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-success btn-lg btn-block" name="submit">Update</button>
+							<button type="submit" class="btn btn-success btn-lg btn-block" name="update">Update</button>
 						</div>
 					</form>
 
