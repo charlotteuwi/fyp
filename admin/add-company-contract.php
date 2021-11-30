@@ -47,6 +47,7 @@ if ($_SESSION['usertype'] != 'admin') {
 							<p class="ml-2"> Contracts</p>
 						</div>
 
+<<<<<<< HEAD
 						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 							<p><i class="fas fa-file-alt"></i></p>
 							<p class="ml-2"> Reports</p>
@@ -57,6 +58,25 @@ if ($_SESSION['usertype'] != 'admin') {
 								<p><i class="fas fa-comments"></i> Requests </p>
 							</div>
 						</a>
+=======
+					<a href="add-contract.php">
+						<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-file-signature"></i></p>
+							<p class="ml-2"> Contracts</p>
+
+						</div>
+					</a>
+					<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+						<p><i class="fas fa-file-alt"></i></p>
+						<p class="ml-2"> Reports</p>
+					</div>
+					<a href="view_request.php">
+                            <div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+			        cusror-pointer border-b border-red-800 shadow-lg">
+                                <p><i class="fas fa-comments"></i> Requests </p>
+                            </div>
+                        </a>
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
 						<a href="changepassword.php">
 							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 								<p><i class="fas fa-user-cog"></i></p>

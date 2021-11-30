@@ -14,7 +14,11 @@
         <div class="flex items-center justify-between text-2xl w-full bg-white h-16 px-4 py-2  shadow">
             <div class="font-bold"> E-Contracts </div>
             <div class="font-light"> Admin </div>
+<<<<<<< HEAD
             <div> <img class="h-12" src="../../resources/img/logo.png"> </div>
+=======
+            <div> <img class="h-12" src="img/logo.png"> </div>
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
         </div>
         <!-- Navigations & Contents -->
         <div class="flex">
@@ -62,7 +66,18 @@
 
             <div class="h-200 w-3/4 p-2">
                 <div class="flex-wrap w-full items-center justify-center">
+<<<<<<< HEAD
                 
+=======
+                    <div class="flex justify-between border-b border-gray-900 bg-red-600 rounded-lg px-2 py-4 w-full text-white">
+                        <a href="../admin/add-employee-contract.php"> Add New employee contracts
+                        </a>
+                        <div class="mr-8 flex items-center justify-center">
+                            <input class="px-4 py-1 rounded-full shadow-lg h-8 pr-8 text-gray-400 focus:outline-none" type="text" name="">
+                            <p class="text-red-600 -ml-8"><i class="fas fa-search "></i></p>
+                        </div>
+                    </div>
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
                     <div class="h-200 w-full p-2 flex items-center justify-center">
                         <table class="w-full" cellspacing="10" border="2">
                             <tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="3">

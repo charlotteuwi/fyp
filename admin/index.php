@@ -189,10 +189,10 @@ if ($_SESSION['usertype'] != 'admin') {
 							answer Requests
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+				</div> 
+			</div> 
+		</div> 
+	</div> 
 	</boby>
 
 </html>

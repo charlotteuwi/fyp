@@ -55,7 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if ($uploadedSuccess === true) {
     //$id=$_POST['id'];
     $contract_id = $_POST['contract_id'];
+<<<<<<< HEAD
     $client_name = $_POST['employee_name'];
+=======
+    $client_name = $_POST['client_name'];
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
     $phone_number = $_POST['phone_number'];
     $address = $_POST['address'];
     $description = $_POST['description'];
@@ -66,8 +70,13 @@ if ($uploadedSuccess === true) {
 
     $registered_on = date("d-m-Y");
 
+<<<<<<< HEAD
     $query = mysqli_query($con, "INSERT INTO `usercontracts` VALUES('','$contract_id','$employee_name', '$phone_number','$address','$description','$start_date','$end_date','$filename','ACTIVE','$registered_on')") or die(mysqli_error($con));
     $security = mysqli_query($con, "INSERT INTO `users` VALUES('','$username','$password', 'user', '$contract_id')") or die(mysqli_error($con));
+=======
+    $query = mysqli_query($con, "INSERT INTO `usercontracts` VALUES('','$contract_id','$client_name', '$phone_number','$address','$description','$start_date','$end_date','$filename','ACTIVE','$registered_on')") or die(mysqli_error($con));
+    $security = mysqli_query($con, "INSERT INTO `users` VALUES('','$username','$password', 'employee', '$contract_id')") or die(mysqli_error($con));
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
 
     if ($query) {
         if ($security) {

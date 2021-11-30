@@ -28,7 +28,11 @@ if ($_SESSION['usertype'] != 'admin') {
 		<div class="flex justify-between text-2xl w-full bg-white h-16 px-4 py-2  shadow">
 			<div class="font-bold"> E-Contracts </div>
 			<div class="font-light"> Admin </div>
+<<<<<<< HEAD
 			<div> <img class="h-12" src="img/logo.png"> </div>
+=======
+			<div> <img class="h-12" src="../resources/img/logo.png"> </div>
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
 		</div>
 		<!-- Navigations & Contents -->
 		<div class="flex">
@@ -41,16 +45,31 @@ if ($_SESSION['usertype'] != 'admin') {
 							<p class="ml-2"> Dashboard</p>
 						</div>
 					</a>
+<<<<<<< HEAD
 
 					<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 						<p><i class="fas fa-file-signature"></i></p>
 						<p class="ml-2"> Contracts</p>
 					</div>
 
+=======
+					<a href="add-contract.php">
+						<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-file-signature"></i></p>
+							<p class="ml-2"> Contracts</p>
+
+						</div>
+					</a>
+<a href="">
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
 					<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 						<p><i class="fas fa-file-alt"></i></p>
 						<p class="ml-2"> Reports</p>
 					</div>
+<<<<<<< HEAD
+=======
+</a>
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
 					<a href="view_request.php">
 						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 			        cusror-pointer border-b border-red-800 shadow-lg">
@@ -58,11 +77,19 @@ if ($_SESSION['usertype'] != 'admin') {
 						</div>
 					</a>
 					<a href="changepassword.php">
+<<<<<<< HEAD
 						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 							<p><i class="fas fa-user-cog"></i></p>
 							<p class="ml-2"> Settings</p>
 						</div>
 					</a>
+=======
+							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+								<p><i class="fas fa-user-cog"></i></p>
+								<p class="ml-2"> Settings</p>
+							</div>
+						</a>
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
 					<a href="../logout.php">
 						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 							<p><i class="fas fa-user-cog"></i></p>
@@ -93,8 +120,13 @@ if ($_SESSION['usertype'] != 'admin') {
 									<input class="w-full shadow rounded px-1 py-2" type="text" name="contract_id" required="" readonly id="contract_id">
 								</div>
 								<div class="w-full mt-2">
+<<<<<<< HEAD
 									<p class="text-xs mb-1">Employee Name</p>
 									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" name="employee_name" required="" placeholder="employee Name">
+=======
+									<p class="text-xs mb-1">Client Name</p>
+									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" name="client_name" required="" placeholder="Client Name">
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Phone Number</p>

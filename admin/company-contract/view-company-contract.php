@@ -57,7 +57,11 @@
                                 <th class="p-2"> Company Name </th>
                                 <th class="p-2"> Rem .Days </th>
                                 <th class="p-2"> Status </th>
+<<<<<<< HEAD
                                 <th class="p-2"> Actions </th>
+=======
+                                <th class="p-2"  Actions </th>
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
                             </tr>
 
                             <?php

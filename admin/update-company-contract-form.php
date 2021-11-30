@@ -38,6 +38,7 @@
 							<p><i class="fas fa-file-alt"></i></p>
 							<p class="ml-2"> Reports</p>
 						</div>
+<<<<<<< HEAD
 					</a>
 					<a href="view_request.php">
 						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
@@ -61,6 +62,31 @@
 			</div>
 			<div class="flex-wrap mx-80 mt-20">
 				<p class="hint-text mx-40 mt-12">Update your info.</p>
+=======
+						<a href="#">
+							<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+			        cusror-pointer border-b border-red-800 shadow-lg">
+								<p><i class="fas fa-comments"></i> Requests </p>
+							</div>
+						</a>
+						<a href="changepassword.php">
+							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+								<p><i class="fas fa-user-cog"></i></p>
+								<p class="ml-2"> Settings</p>
+							</div>
+						</a>
+						<a href="../logout.php">
+							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+								<p><i class="fas fa-user-cog"></i></p>
+								<p class="ml-2"> Logout</p>
+							</div>
+						</a>
+				</div>
+			</div>
+			<div>
+			<div class="flex-wrap mx-80 mt-20">
+				<p class="font-bold">Update your info.</p>
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
 				<?php
 				//Database Connection
 				include_once('../resources/connection.php');
@@ -75,6 +101,7 @@
 
 
 					<form action="company-contract/update.php" method="POST">
+<<<<<<< HEAD
 						<div class="row">
 							<div class="col "><input type="text" class="bg-gray-400 form-control" name="id" value="<?php echo $array['id']; ?>" required="true">
 							</div>
@@ -107,6 +134,40 @@
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control" name="isco_supervisor" value="<?php echo $array['isco_supervisor']; ?>" required="true">
+=======
+						Id<div class="row">
+							<div class="col "><input type="text" class="bg-gray-200 form-control" name="id" value="<?php echo $array['id']; ?>" required="true">
+							</div>
+						</div>
+						Company Name<div class="row">
+							<div class="col"><input type="text" class=" bg-gray-200 form-control" name="company_name" value="<?php echo $array['company_name']; ?>" required="true">
+							</div>
+						</div>
+						Tin Number<div class="form-group">
+							<input type="text" class=" bg-gray-200 form-control" name="tin_number" value="<?php echo $array['tin_number']; ?>" required="true">
+						</div>
+
+						Description<div class="form-group">
+							<input type="text" class=" bg-gray-200 form-control" name="description" value="<?php echo $array['description']; ?>" required="true">
+						</div>
+						Manager<div class="form-group">
+							<input type="text" class=" bg-gray-200 form-control" name="manager" value="<?php echo $array['manager']; ?>" required="true">
+						</div>
+						Phone Number<div class="form-group">
+							<input type="number" class=" bg-gray-200 form-control" name="phone_number" value="<?php echo $array['phone_number']; ?>" required="true">
+						</div>
+						Address<div class="form-group">
+							<input type="text" class=" bg-gray-200 form-control" name="address" value="<?php echo $array['address']; ?>" required="true">
+						</div>
+						Start Date<div class="form-group">
+							<input type="date" class=" bg-gray-200 form-control" name="start_date" value="<?php echo $array['start_date']; ?>" required="true">
+						</div>
+						End Date<div class="form-group">
+							<input type="date" class=" bg-gray-200 form-control" name="end_date" value="<?php echo $array['end_date']; ?>" required="true">
+						</div>
+						Isco Supervisor<div class="form-group">
+							<input type="text" class=" bg-gray-200 form-control" name="isco_supervisor" value="<?php echo $array['isco_supervisor']; ?>" required="true">
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-success btn-lg btn-block" name="update">Update</button>
@@ -118,6 +179,10 @@
 				} ?>
 			</div>
 		</div>
+<<<<<<< HEAD
+=======
+		</div>
+>>>>>>> 4e579997526905a0036842f76e95fb4fd562c343
 </body>
 
 </html>
