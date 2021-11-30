@@ -57,6 +57,12 @@ if ($_SESSION['usertype'] != 'admin') {
 							<p><i class="fas fa-comments"></i> Requests </p>
 						</div>
 					</a>
+					<a href="changepassword.php">
+						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-user-cog"></i></p>
+							<p class="ml-2"> Settings</p>
+						</div>
+					</a>
 					<a href="../logout.php">
 						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 							<p><i class="fas fa-user-cog"></i></p>
@@ -87,8 +93,8 @@ if ($_SESSION['usertype'] != 'admin') {
 									<input class="w-full shadow rounded px-1 py-2" type="text" name="contract_id" required="" readonly id="contract_id">
 								</div>
 								<div class="w-full mt-2">
-									<p class="text-xs mb-1">Client Name</p>
-									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" name="client_name" required="" placeholder="Client Name">
+									<p class="text-xs mb-1">Employee Name</p>
+									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" name="employee_name" required="" placeholder="employee Name">
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Phone Number</p>

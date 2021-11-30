@@ -28,7 +28,7 @@ if ($_SESSION['usertype'] != 'admin') {
 		<div class="flex justify-between text-2xl w-full bg-white h-16 px-4 py-2  shadow">
 			<div class="font-bold"> E-Contracts </div>
 			<div class="font-light"> Admin </div>
-			<div> <img class="h-12" src="img/logo.png"> </div>
+			<div> <img class="h-12" src="../resources/img/logo.png"> </div>
 		</div>
 		<!-- Navigations & Contents -->
 		<div class="flex">
@@ -41,22 +41,28 @@ if ($_SESSION['usertype'] != 'admin') {
 							<p class="ml-2"> Dashboard</p>
 						</div>
 					</a>
+					<a href="add-contract.php">
+						<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-file-signature"></i></p>
+							<p class="ml-2"> Contracts</p>
+						</div>
 
-					<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-						<p><i class="fas fa-file-signature"></i></p>
-						<p class="ml-2"> Contracts</p>
-					</div>
-
-					<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-						<p><i class="fas fa-file-alt"></i></p>
-						<p class="ml-2"> Reports</p>
-					</div>
-					<a href="view_request.php">
-                            <div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-file-alt"></i></p>
+							<p class="ml-2"> Reports</p>
+						</div>
+						<a href="view_request.php">
+							<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 			        cusror-pointer border-b border-red-800 shadow-lg">
-                                <p><i class="fas fa-comments"></i> Requests </p>
-                            </div>
-                        </a>
+								<p><i class="fas fa-comments"></i> Requests </p>
+							</div>
+						</a>
+						<a href="changepassword.php">
+							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+								<p><i class="fas fa-user-cog"></i></p>
+								<p class="ml-2"> Settings</p>
+							</div>
+						</a>
 						<a href="../logout.php">
 							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 								<p><i class="fas fa-user-cog"></i></p>
@@ -65,14 +71,13 @@ if ($_SESSION['usertype'] != 'admin') {
 						</a>
 				</div>
 			</div>
-			
+
 			<div class="w-full items-center justify-center">
 				<div class="flex justify-between border-b border-gray-900 bg-red-600 px-2 py-4 w-full text-white">
 					<p class="font-bold">Form to Add New Company contracts </p>
 					<Div class=" bg-red-600 rounded px-4 py-1 w-100 text-white">
 						<a href="add-contract.php">
-							<<< BACK 
-						</a>
+							<<< BACK </a>
 					</div>
 				</div>
 
@@ -80,10 +85,10 @@ if ($_SESSION['usertype'] != 'admin') {
 					<div class="w-3/4 bg-blue-200 rounded-l border-r border-red-800 p-4">
 						<p class="font-bold">Company Information</p>
 						<form action="company-contract/insert.php" method="POST" enctype="multipart/form-data">
-							
-						<div class="w-3/4 flex-wrap gap-2 bg-blue-200 rounded-l  p-4">
-								
-							<div class="w-full mt-2">
+
+							<div class="w-3/4 flex-wrap gap-2 bg-blue-200 rounded-l  p-4">
+
+								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Company Name</p>
 									<input class="w-full  px-2 shadow rounded px-1 py-2" type="text" name="company_name" required="" placeholder="Company Name">
 								</div>
@@ -118,7 +123,7 @@ if ($_SESSION['usertype'] != 'admin') {
 						<div class="w-full flex gap-2 mt-2">
 							<div class="w-full">
 								<p class="text-xs mb-1">Start Date</p>
-								<input class="w-full shadow rounded px-1 py-2" type="date" name="start_date" required="" >
+								<input class="w-full shadow rounded px-1 py-2" type="date" name="start_date" required="">
 							</div>
 							<div class="w-full">
 								<p class="text-xs mb-1">End Date</p>
@@ -129,7 +134,7 @@ if ($_SESSION['usertype'] != 'admin') {
 							<p class="text-xs mb-1">Contract Document</p>
 							<input type="file" name="document" id="document">
 						</div>
-						
+
 						<div class="w-full mt-2">
 							<p class="text-xs mb-1">ISCO Supervisor</p>
 							<input class="w-full shadow rounded px-1 py-2" type="text" name="isco_supervisor" required="" placeholder="ISCO Supervisor">
@@ -140,7 +145,7 @@ if ($_SESSION['usertype'] != 'admin') {
 							<p class="text-xs mb-1">Username</p>
 							<input class="w-full shadow rounded px-1 py-2" type="text" name="username" required="" placeholder="Username">
 						</div>
-						
+
 						<div class="w-full mt-2">
 							<p class="text-xs mb-1">Password</p>
 							<input class="w-full shadow rounded px-1 py-2" type="password" name="password" required="" placeholder="Password">
