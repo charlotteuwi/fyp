@@ -27,20 +27,34 @@
                             <p class="ml-2"> Dashboard</p>
                         </div>
                     </a>
-
-                    <div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-                        <p><i class="fas fa-file-signature"></i></p>
-                        <p class="ml-2"> Contracts</p>
-                    </div>
-
-                    <div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-                        <p><i class="fas fa-file-alt"></i></p>
-                        <p class="ml-2"> Reports</p>
-                    </div>
-                    <a href="Settings.php">
+                    <a href="add-contract.php">
+                        <div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+                            <p><i class="fas fa-file-signature"></i></p>
+                            <p class="ml-2"> Contracts</p>
+                        </div>
+                    </a>
+                    <a href="view_request.php">
+                        <div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+			        cusror-pointer border-b border-red-800 shadow-lg">
+                            <p><i class="fas fa-comments"></i> Requests </p>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+                            <p><i class="fas fa-file-alt"></i></p>
+                            <p class="ml-2"> Reports</p>
+                        </div>
+                    </a>
+                    <a href="changepassword.php">
                         <div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
                             <p><i class="fas fa-user-cog"></i></p>
                             <p class="ml-2"> Settings</p>
+                        </div>
+                    </a>
+                    <a href="../logout.php">
+                        <div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+                            <p><i class="fas fa-user-cog"></i></p>
+                            <p class="ml-2"> Logout</p>
                         </div>
                     </a>
                 </div>
@@ -49,7 +63,7 @@
             <div class="h-200 w-3/4 p-2">
                 <div class="flex-wrap w-full items-center justify-center">
                     <div class="flex justify-between border-b border-gray-900 bg-red-600 rounded-lg px-2 py-4 w-full text-white">
-                        <a href="../admin/add-company-contract.php"> Add New contracts
+                        <a href="../admin/add-employee-contract.php"> Add New employee contracts
                         </a>
                         <div class="mr-8 flex items-center justify-center">
                             <input class="px-4 py-1 rounded-full shadow-lg h-8 pr-8 text-gray-400 focus:outline-none" type="text" name="">
@@ -61,16 +75,16 @@
                             <tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="3">
                                 <th class="p-2"> Id </th>
                                 <th class="p-2"> Contract ID </th>
-                                <th class="p-2"> Company Name </th>
+                                <th class="p-2"> employee Name </th>
                                 <th class="p-2"> Rem .Days </th>
                                 <th class="p-2"> Status </th>
-                                <th class="p-2"  Actions </th>
+                                <th class="p-2" > Actions </th>
                             </tr>
 
                             <?php
                             include_once('../../resources/connection.php');
 
-                            $query = "SELECT id, contract_id ,company_name, end_date from companycontracts"; // Fetch all the records from the table address
+                            $query = "SELECT id, contract_id ,employee_name, end_date from usercontracts"; // Fetch all the records from the table address
                             $result = mysqli_query($con, $query);
 
                             while ($array = mysqli_fetch_array($result)) { ?>
@@ -79,8 +93,8 @@
                                     <td><?php echo $array[1]; ?></td>
                                     <td><?php echo $array[2]; ?></td>
                                     <td><?php echo $array[3]; ?></td>
-                                    <td ><a href="update-company-contract-form.php?id=<?php echo $array['id']; ?>"><i class="fas fa-user-edit"></i></a></td>
-                                    
+                                    <td><a href="#?id=<?php echo $array['id']; ?>"><i class="fas fa-user-edit"></i></a></td>
+
                                 </tr>
 
                             <?php } ?>

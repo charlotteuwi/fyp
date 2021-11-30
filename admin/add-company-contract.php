@@ -28,7 +28,7 @@ if ($_SESSION['usertype'] != 'admin') {
 		<div class="flex justify-between text-2xl w-full bg-white h-16 px-4 py-2  shadow">
 			<div class="font-bold"> E-Contracts </div>
 			<div class="font-light"> Admin </div>
-			<div> <img class="h-12" src="img/logo.png"> </div>
+			<div> <img class="h-12" src="../resources/img/logo.png"> </div>
 		</div>
 		<!-- Navigations & Contents -->
 		<div class="flex">
@@ -42,11 +42,13 @@ if ($_SESSION['usertype'] != 'admin') {
 						</div>
 					</a>
 
-					<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-						<p><i class="fas fa-file-signature"></i></p>
-						<p class="ml-2"> Contracts</p>
-					</div>
+					<a href="add-contract.php">
+						<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-file-signature"></i></p>
+							<p class="ml-2"> Contracts</p>
 
+						</div>
+					</a>
 					<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 						<p><i class="fas fa-file-alt"></i></p>
 						<p class="ml-2"> Reports</p>
@@ -57,6 +59,12 @@ if ($_SESSION['usertype'] != 'admin') {
                                 <p><i class="fas fa-comments"></i> Requests </p>
                             </div>
                         </a>
+						<a href="changepassword.php">
+							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+								<p><i class="fas fa-user-cog"></i></p>
+								<p class="ml-2"> Settings</p>
+							</div>
+						</a>
 						<a href="../logout.php">
 							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 								<p><i class="fas fa-user-cog"></i></p>

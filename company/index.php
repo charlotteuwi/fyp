@@ -117,7 +117,7 @@ if ($_SESSION['usertype'] != 'company') {
                 <div>
                     <div class="text-lg font-bold text-gray-800">Download Link</div>
                     <div class="text-base  font-normal text-blue-600">
-                        https://devlites.com
+                    <a href="../admin/company-contract/upload/<?php echo $file ;?>">Download</a>
                     </div>
                 </div>
                 <div class="text-right">
