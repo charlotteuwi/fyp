@@ -111,6 +111,11 @@ if ($_SESSION['usertype'] != 'user'){
                     <div class="text-lg font-bold text-gray-800"><?php echo $file; ?></div>
                 </div>
             </div>
+			<div class="text-lg font-bold text-gray-800">Download Link</div>
+                    <div class="text-base  font-normal text-blue-600">
+                    <a href="../admin/employee-contract/upload/<?php echo $file ;?>">Download</a>
+                    </div>
+                
 
             <div class="flex items-center justify-between mt-4">
                 <div>

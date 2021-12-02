@@ -123,7 +123,7 @@ if ($_SESSION['usertype'] != 'admin') {
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Contract Document</p>
-									<input type="file" name="document" id="document">
+									<input type="file"accept=".pdf" name="document" id="document">
 								</div>
 								<p class="font-bold mt-2">Autentication Information</p>
 
