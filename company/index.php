@@ -58,17 +58,17 @@ if ($_SESSION['usertype'] != 'company') {
             <?php
             $contract_id = $_SESSION['contract_id'];
 
-        
-            if ($stmt = $con->prepare('SELECT contract_id, company_name,phone_number, description, start_date, end_date, address, file, manager, isco_supervisor FROM companycontracts WHERE contract_id = ?')) {
-         
+
+            if ($stmt = $con->prepare('SELECT contract_id, company_name,phone_number, description, start_date, end_date, address, file, manager, isco_supervisor, status FROM companycontracts WHERE contract_id = ?')) {
+
                 // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
                 $stmt->bind_param('s', $contract_id);
                 $stmt->execute();
                 // Store the result so we can check if the account exists in the database.
                 $stmt->store_result();
                 if ($stmt->num_rows > 0) {
-                   // echo "Fetch Success";
-                    $stmt->bind_result($contract_id, $company_name, $phone_number, $description, $start_date, $end_date, $address, $file, $manager, $isco_supervisor);
+                    // echo "Fetch Success";
+                    $stmt->bind_result($contract_id, $company_name, $phone_number, $description, $start_date, $end_date, $address, $file, $manager, $isco_supervisor, $status);
                     $stmt->fetch();
 
             ?>
@@ -126,8 +126,30 @@ if ($_SESSION['usertype'] != 'company') {
                                 </div>
                                 <div class="text-right">
                                     <div class="text-lg font-bold text-gray-800">Status</div>
-                                    <div class="text-base  font-normal text-green-600">
-                                        Active (100 Days)
+                                    <?php
+                                    function dateDifference($date1, $date2)
+                                    {
+                                        $date1_ts = strtotime($date1);
+                                        $date2_ts = strtotime($date2);
+                                        $diff = $date2_ts - $date1_ts;
+                                        return round($diff / 86400);
+                                    }
+            
+
+                                    $date1 = date('Y-m-d');
+                                    $date2 = $end_date;
+
+                                    $dateDiff =  dateDifference($date1, $date2);
+                                    if ($dateDiff < 0) {
+                                        $contractColor = "text-red-600";
+                                    } else if ($dateDiff < 7) {
+                                        $contractColor = "text-yellow-600";
+                                    } else {
+                                        $contractColor = "text-green-600";
+                                    }
+                                    ?>
+                                    <div class="text-base  font-normal <?php echo $contractColor; ?>">
+                                        <?php echo $status; ?> (<?php echo $dateDiff; ?> Days)
                                     </div>
                                 </div>
                             </div>
