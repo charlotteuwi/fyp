@@ -48,12 +48,12 @@ if ($_SESSION['usertype'] != 'admin') {
 
 						</div>
 					</a>
-<a href="">
-					<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-						<p><i class="fas fa-file-alt"></i></p>
-						<p class="ml-2"> Reports</p>
-					</div>
-</a>
+					<a href="">
+						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-file-alt"></i></p>
+							<p class="ml-2"> Reports</p>
+						</div>
+					</a>
 					<a href="view_request.php">
 						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 			        cusror-pointer border-b border-red-800 shadow-lg">
@@ -61,11 +61,11 @@ if ($_SESSION['usertype'] != 'admin') {
 						</div>
 					</a>
 					<a href="changepassword.php">
-							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-								<p><i class="fas fa-user-cog"></i></p>
-								<p class="ml-2"> Settings</p>
-							</div>
-						</a>
+						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-user-cog"></i></p>
+							<p class="ml-2"> Settings</p>
+						</div>
+					</a>
 					<a href="../logout.php">
 						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 							<p><i class="fas fa-user-cog"></i></p>
@@ -96,12 +96,12 @@ if ($_SESSION['usertype'] != 'admin') {
 									<input class="w-full shadow rounded px-1 py-2" type="text" name="contract_id" required="" readonly id="contract_id">
 								</div>
 								<div class="w-full mt-2">
-									<p class="text-xs mb-1">Client Name</p>
-									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" name="client_name" required="" placeholder="Client Name">
+									<p class="text-xs mb-1">Employee Name</p>
+									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" name="employee_name" required="" placeholder="Employee Name">
 								</div>
 								<div class="w-full mt-2">
-									<p class="text-xs mb-1">Phone Number</p>
-									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" name="phone_number" required="" required="0700000000" placeholder="0700000000">
+									<p class="text-xs mb-1">Phone Number <strong>(Format: Eg: 0784330167)</strong></p>
+									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" pattern="[0]{1}[7]{1}[2-9]{1}[0-9]{7}" name="phone_number" max="10" required="" required="0700000000" placeholder="0700000000">
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Address</p>
@@ -114,27 +114,28 @@ if ($_SESSION['usertype'] != 'admin') {
 								<div class="w-full flex gap-2 mt-2">
 									<div class="w-full">
 										<p class="text-xs mb-1">Start Date</p>
-										<input class="w-full shadow rounded px-1 py-2" type="date" name="start_date" required="">
+										<input class="w-full shadow rounded px-1 py-2" type="date" min="<?php echo date("Y-m-d"); ?>" name="start_date" required="">
 									</div>
 									<div class="w-full">
 										<p class="text-xs mb-1">End Date</p>
-										<input class="w-full shadow rounded px-1 py-2" type="date" name="end_date" required="">
+										<input class="w-full shadow rounded px-1 py-2" type="date" min="<?php echo date("Y-m-d", strtotime('+30 days')); ?>" name="end_date" required="">
 									</div>
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Contract Document</p>
-									<input type="file"accept=".pdf" name="document" id="document">
+									<input type="file" accept=".pdf" name="document" id="document">
 								</div>
 								<p class="font-bold mt-2">Autentication Information</p>
+								<p class="text-xs">(AUTO SMS Will be sent to Phone Number)</p>
 
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Username</p>
-									<input class="w-full shadow rounded px-1 py-2" type="text" name="username" required="" placeholder="Username">
+									<input readonly id="username" class="w-full shadow rounded px-1 py-2" type="text" name="username" required="" placeholder="Username">
 								</div>
 
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Password</p>
-									<input class="w-full shadow rounded px-1 py-2" type="password" name="password" required="" placeholder="Password">
+									<input readonly id="password" class="w-full shadow rounded px-1 py-2" type="password" name="password" required="" placeholder="Password">
 								</div>
 							</div>
 					</div>
@@ -162,8 +163,9 @@ if ($_SESSION['usertype'] != 'admin') {
 		}
 		return result;
 	}
-
 	document.getElementById('contract_id').value = makeid(9);
+	document.getElementById('username').value = makeid(6);
+	document.getElementById('password').value = makeid(6);
 </script>
 
 </html>

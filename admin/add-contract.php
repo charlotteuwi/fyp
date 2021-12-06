@@ -54,76 +54,99 @@ if ($_SESSION['usertype'] != 'admin') {
 							<p class="ml-2"> Reports</p>
 						</div>
 					</a>
-						<a href="view_request.php">
-                            <div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+					<a href="view_request.php">
+						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 			        cusror-pointer border-b border-red-800 shadow-lg">
-                                <p><i class="fas fa-comments"></i> Requests </p>
-                            </div>
-                        </a>
-						<a href="changepassword.php">
-							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-								<p><i class="fas fa-user-cog"></i></p>
-								<p class="ml-2"> Settings</p>
-							</div>
-						</a>
-						<a href="../logout.php">
-							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-								<p><i class="fas fa-user-cog"></i></p>
-								<p class="ml-2"> Logout</p>
-							</div>
-						</a>
-				</div>
-			</div>
-
-<div class="flex-wrap">
-			<div class="h-200 w-3/4 p-2">
-				<div class="flex-wrap w-full items-center justify-center">
-					<a href="add-company-contract.php">
-						<div class="items-center justify-center hover:bg-red-800  flex px-10 py-30 bg-gray-900 h-20 rounded text-white">
-							Add Company Contract
+							<p><i class="fas fa-comments"></i> Requests </p>
 						</div>
 					</a>
-					<a href="add-employee-contract.php">
-						<div class="flex items-center justify-center hover:bg-red-800 mt-2 px-10 py-30 bg-gray-900 h-20 rounded text-white">
-							Add Employee Contract
-						
+					<a href="changepassword.php">
+						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-user-cog"></i></p>
+							<p class="ml-2"> Settings</p>
+						</div>
+					</a>
+					<a href="../logout.php">
+						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-user-cog"></i></p>
+							<p class="ml-2"> Logout</p>
 						</div>
 					</a>
 				</div>
 			</div>
 
-			<div class="h-200 w-full px-16 py-10 mt-8 flex-wrap items-center justify-center">
-                        <table class="w-full" cellspacing="10">
-                            <tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="4">
-                                <th class="p-2"> Id </th>
-                                <th class="p-2"> Contract ID </th>
-                                <th class="p-2"> Company Name </th>
-                                <th class="p-2"> Rem .Days </th>
-								<th class="p-2"> Status </th>
-                                <th class="p-2"> Actions </th> 
-                            </tr>
+			<div class="flex-wrap w-3/4">
+				<div class="w-full p-2 flex items-center justify-center">
+					<div class="flex w-full items-center justify-center">
+						<a href="add-company-contract.php">
+							<div class="items-center justify-center hover:bg-red-800  flex px-10 py-30 bg-gray-900 h-20 rounded text-white">
+								Add Company Contract
+							</div>
+						</a>
+						<a href="add-employee-contract.php">
+							<div class="flex items-center justify-center hover:bg-red-800 ml-2 px-10 py-30 bg-gray-900 h-20 rounded text-white">
+								Add Employee Contract
+							</div>
+						</a>
+					</div>
+				</div>
 
-                            <?php
-                            include_once('../resources/connection.php');
+				<div class="h-200 w-full bg-white px-16 py-10 mt-8 flex-wrap items-center justify-center">
+					<table class="w-full" cellspacing="10">
+						<tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="4">
+							<th class="p-2"> Id </th>
+							<th class="p-2"> Contract ID </th>
+							<th class="p-2"> Company Name </th>
+							<th class="p-2"> Rem .Days </th>
+							<th class="p-2"> Status </th>
+							<th class="p-2"> Actions </th>
+						</tr>
 
-                            $query = "SELECT id, contract_id ,company_name, end_date,status from companycontracts"; // Fetch all the records from the table address
-                            $result = mysqli_query($con, $query);
+						<?php
+						include_once('../resources/connection.php');
 
-                            while ($array = mysqli_fetch_array($result)) { ?>
-                                <tr>
-                                    <td><?php echo $array['id']; ?></td>
-                                    <td><?php echo $array[1]; ?></td>
-                                    <td><?php echo $array[2]; ?></td>
-                                    <td><?php echo $array[3]; ?></td>
-									<td><?php echo $array[4]; ?></td>
-                                    <td ><a href="update-company-contract-form.php?id=<?php echo $array['id']; ?>"><i class="fas fa-user-edit"></i></a></td>
-                                    
-                                </tr>
+						function dateDifference($date1, $date2)
+						{
+							$date1_ts = strtotime($date1);
+							$date2_ts = strtotime($date2);
+							$diff = $date2_ts - $date1_ts;
+							return round($diff / 86400);
+						}
 
-                            <?php } ?>
-                        </table>
-                    </div>
-</div>
+						$query = "SELECT id, contract_id ,company_name, end_date,status from companycontracts"; // Fetch all the records from the table address
+						$result = mysqli_query($con, $query);
+
+						while ($array = mysqli_fetch_array($result)) {
+						?>
+							<tr>
+								<td class="p-2"><?php echo $array['id']; ?></td>
+								<td class="p-2"><?php echo $array[1]; ?></td>
+								<td class="p-2"><?php echo $array[2]; ?></td>
+								<?php
+								$date1 = date('Y-m-d');
+								$date2 = $array[3];
+
+								$dateDiff =  dateDifference($date1, $date2);
+								if ($dateDiff < 0) {
+									$contractColor = "bg-red-500 font-bold text-gray-900 p-2";
+								} else if ($dateDiff < 7) {
+									$contractColor = "bg-yellow-500 font-bold text-gray-900 p-2";
+								} else {
+									$contractColor = "bg-green-500 font-bold text-gray-900 p-2";
+								}
+								?>
+								<td class="<?php echo $contractColor ?>">
+									<?php echo $dateDiff; ?>
+								</td>
+								</td>
+								<td class="p-2"><?php echo $array[4]; ?></td>
+								<td class="p-2"><a href="update-company-contract-form.php?id=<?php echo $array['id']; ?>"><i class="fas fa-user-edit"></i></a></td>
+							</tr>
+
+						<?php } ?>
+					</table>
+				</div>
+			</div>
 
 		</div>
 	</div>

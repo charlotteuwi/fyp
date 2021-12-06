@@ -56,14 +56,15 @@ if ($_SESSION['usertype'] != 'user'){
 			</div>
 			<?php
 			$contract_id = $_SESSION['contract_id'];
-			if ($stmt = $con->prepare('SELECT contract_id, client_name, phone_number, address, description, start_date, end_date, file, status, registered_on FROM usercontracts WHERE contract_id = ?')) {
+			if ($stmt = $con->prepare('SELECT contract_id, employee_name, phone_number, address, description, start_date, end_date, file, status, registered_on FROM usercontracts WHERE contract_id = ?')) {
 				// Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
 				$stmt->bind_param('s', $contract_id);
 				$stmt->execute();
 				// Store the result so we can check if the account exists in the database.
 				$stmt->store_result();
 				if ($stmt->num_rows > 0) {
-					$stmt->bind_result($contract_id, $client_name, $phone_number, $address, $description, $start_date, $end_date, $file, $status, $registered_on);
+					//echo "Fetch Success";
+					$stmt->bind_result($contract_id, $employee_name, $phone_number, $address, $description, $start_date, $end_date, $file, $status, $registered_on);
 					$stmt->fetch();
 
 			?>
@@ -76,8 +77,8 @@ if ($_SESSION['usertype'] != 'user'){
                     <div class="text-lg font-bold text-gray-800"><?php echo $contract_id; ?></div>
                 </div>
 				<div class="text-right">
-                    <div class="text-xs font-bold text-gray-600">Client_Name</div>
-                    <div class="text-lg font-bold text-gray-800"><?php echo $client_name; ?></div>
+                    <div class="text-xs font-bold text-gray-600">Employee_Name</div>
+                    <div class="text-lg font-bold text-gray-800"><?php echo $employee_name; ?></div>
                 </div>
 			</div>
 			<div class="flex items-center justify-between">				
@@ -111,7 +112,7 @@ if ($_SESSION['usertype'] != 'user'){
                     <div class="text-lg font-bold text-gray-800"><?php echo $file; ?></div>
                 </div>
             </div>
-			<div class="text-lg font-bold text-gray-800">Download Link</div>
+			<div class="text-lg font-bold text-gray-800">Preview Link</div>
                     <div class="text-base  font-normal text-blue-600">
                     <a href="../admin/employee-contract/upload/<?php echo $file ;?>">Download</a>
                     </div>

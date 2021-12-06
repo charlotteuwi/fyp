@@ -77,7 +77,7 @@
 
 					<form action="company-contract/update.php" method="POST">
 						Id<div class="row">
-							<div class="col "><input type="text" class="bg-gray-200 form-control" name="id" value="<?php echo $array['id']; ?>" required="true">
+							<div class="col "><input type="text" readonly class="bg-gray-200 form-control" name="id" value="<?php echo $array['id']; ?>" required="true">
 							</div>
 						</div>
 						Company Name<div class="row">

@@ -35,15 +35,15 @@ include_once('../resources/connection.php');
         <div class="flex">
             <div class="bg-gray-900 w-1/4 py-10 ">
                 <div class="text-gray-100 font-light flex-wrap gap-1/2">
-                    <a href="">
-                        <div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+                    <a href="index.php">
+                        <div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 				cusror-pointer border-b border-red-800 shadow-lg">
                             <p><i class="fas fa-tachometer-alt"></i> Dashboard</p>
                         </div>
                     </a>
 
-                    <a href="#">
-                        <div class="py-4 px-5 bg-gray-800 text-white mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+                    <a href="user-request.php">
+                        <div class="py-4 px-5 bg-white text-gray-800 text-white mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 		        cusror-pointer border-b border-red-800 shadow-lg">
                             <p><i class="fas fa-file-alt"></i> Request</p>
                         </div>

@@ -14,7 +14,7 @@ if ($_SESSION['usertype'] != 'user') {
 }
 include_once('../../resources/connection.php');
 $contract_id=$_POST['contract_id'];
-$manager=$_POST['client_name'];
+$manager=$_POST['manager'];
 $phone_number=$_POST['phone_number'];
 $day = date('d-m-Y');
 

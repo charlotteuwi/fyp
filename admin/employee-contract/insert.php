@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if ($uploadedSuccess === true) {
     //$id=$_POST['id'];
     $contract_id = $_POST['contract_id'];
-    $client_name = $_POST['client_name'];
+    $employee_name = $_POST['employee_name'];
     $phone_number = $_POST['phone_number'];
     $address = $_POST['address'];
     $description = $_POST['description'];
@@ -65,17 +65,45 @@ if ($uploadedSuccess === true) {
     $password = $_POST['password'];
 
     $registered_on = date("d-m-Y");
+   
+    $message = "Hi Employee, your Username is: " . $username . " and Password is: " . $password . " KEEP THEM SAFE, Thank you!";
 
-    $query = mysqli_query($con, "INSERT INTO `usercontracts` VALUES('','$contract_id','$client_name', '$phone_number','$address','$description','$start_date','$end_date','$filename','ACTIVE','$registered_on')") or die(mysqli_error($con));
-    $security = mysqli_query($con, "INSERT INTO `users` VALUES('','$username','$password', 'employee', '$contract_id')") or die(mysqli_error($con));
+    $query = mysqli_query($con, "INSERT INTO `usercontracts` VALUES('','$contract_id','$employee_name', '$phone_number','$address','$description','$start_date','$end_date','$filename','ACTIVE','$registered_on')") or die(mysqli_error($con));
+    $security = mysqli_query($con, "INSERT INTO `users` VALUES('','$username','$password', 'user', '$contract_id')") or die(mysqli_error($con));
 
     if ($query) {
+        $notificationMessage = "Data Into Contracts Inserted";
         if ($security) {
-            header('Location: ../../notification.php?notification=Data Successfully Registered!');
+            $notificationMessage = "Data Into Contracts and User Inserted";
+
+            header('Location: ../../notification.php?notification='.$notificationMessage);
+            $data = array("sender" => 'ECAS', "recipients" => $phone_number, "message" => $message,);
+
+            $url = "https://www.intouchsms.co.rw/api/sendsms/.json";
+            $data = http_build_query($data);
+            $username = "charlotteuwi";
+            $password = "7962zzAW@EuHHnc";
+
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+            $result = curl_exec($ch);
+            $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            curl_close($ch);
+
+
         } else {
-            header('Location: ../../notification.php?notification=Login Information not Recorded!');
+            header('Location: ../../notification.php?notification='.$notificationMessage);
         }
     } else {
-        header('Location: ../../notification.php?notification=No Data Inserted!');
+        $notificationMessage = "No data inserted";
+        header('Location: ../../notification.php?notification='.$notificationMessage);
     }
 }

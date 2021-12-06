@@ -86,15 +86,15 @@ if ($_SESSION['usertype'] != 'admin') {
 				<div class="flex p-4">
 					<div class="w-3/4 bg-blue-200 rounded-l border-r border-red-800 p-4">
 						<p class="font-bold">Company Information</p>
-						<form action="company-contract/insert.php" method="POST" enctype="multipart/form-data">
+						<form name="companyContractForm" action="company-contract/insert.php" method="POST" enctype="multipart/form-data">
 							<div class="w-3/4 flex-wrap gap-2 bg-blue-200 rounded-l  p-4">
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Company Name</p>
 									<input class="w-full  px-2 shadow rounded px-1 py-2" type="text" name="company_name" required="" placeholder="Company Name">
 								</div>
 								<div class="w-full mt-2">
-									<p class="text-xs mb-1">TIN Number</p>
-									<input class="w-full px-2 shadow rounded px-1 py-2" type="number" maxlength="12" name="tin_number" required="" placeholder="TIN Number">
+									<p class="text-xs mb-1">TIN Number (Only 9 Digits)</p>
+									<input class="w-full px-2 shadow rounded px-1 py-2" type="number" min=9 max=9 maxlength=9 name="tin_number" required="" placeholder="TIN Number">
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Description</p>
@@ -105,8 +105,8 @@ if ($_SESSION['usertype'] != 'admin') {
 									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" name="manager" required="" placeholder="Manager">
 								</div>
 								<div class="w-full mt-2">
-									<p class="text-xs mb-1">Phone Number</p>
-									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" name="phone_number" required="" required="0700000000" placeholder="0700000000">
+									<p class="text-xs mb-1">Phone Number <strong>(Format: Eg: 0784330167)</strong></p>
+									<input class="w-full px-2 shadow rounded px-1 py-2" type="text" pattern="[0]{1}[7]{1}[2-9]{1}[0-9]{7}" name="phone_number" max="10" required="" required="0700000000" placeholder="0700000000">
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Address</p>
@@ -123,11 +123,11 @@ if ($_SESSION['usertype'] != 'admin') {
 						<div class="w-full flex gap-2 mt-2">
 							<div class="w-full">
 								<p class="text-xs mb-1">Start Date</p>
-								<input class="w-full shadow rounded px-1 py-2" type="date" name="start_date" required="" >
+								<input class="w-full shadow rounded px-1 py-2" type="date" min="<?php echo date ("Y-m-d");?>" name="start_date" required="" >
 							</div>
 							<div class="w-full">
 								<p class="text-xs mb-1">End Date</p>
-								<input class="w-full shadow rounded px-1 py-2" type="date" name="end_date" required="">
+								<input class="w-full shadow rounded px-1 py-2" type="date" min="<?php echo date ("Y-m-d",strtotime('+30 days'));?>"  name="end_date" required="">
 							</div>
 						</div>
 						<div class="w-full mt-2">
@@ -140,21 +140,23 @@ if ($_SESSION['usertype'] != 'admin') {
 							<input class="w-full shadow rounded px-1 py-2" type="text" name="isco_supervisor" required="" placeholder="ISCO Supervisor">
 						</div>
 						<p class="font-bold mt-2">Autentication Information</p>
+						<p class="text-xs">(AUTO SMS Will be sent to Phone Number)</p>
 
 						<div class="w-full mt-2">
 							<p class="text-xs mb-1">Username</p>
-							<input class="w-full shadow rounded px-1 py-2" type="text" name="username" required="" placeholder="Username">
+							<input readonly id="username" class="w-full shadow rounded px-1 py-2" type="text" name="username" required="" placeholder="Username">
 						</div>
 						
 						<div class="w-full mt-2">
 							<p class="text-xs mb-1">Password</p>
-							<input class="w-full shadow rounded px-1 py-2" type="password" name="password" required="" placeholder="Password">
+							<input readonly id="password" class="w-full shadow rounded px-1 py-2" type="password" name="password" required="" placeholder="Password">
 						</div>
 					</div>
 
 				</div>
 				<div class="w-full mt-2 flex items-center justify-center mb-8">
-					<input class="w-1/3 rounded-lg text-white bg-red-600 shadow rounded px-1 py-2" type="submit" name="save" value="submit" class="border-b border-gray-900 bg-red-600 rounded-full px-4 py-1 w-64 text-white">
+					<input class="w-1/3 rounded-lg text-white bg-green-600 shadow rounded px-1 py-2" type="submit" name="save" value="Add Contract" >
+					<input class="w-1/3 ml-2 text-center rounded-lg text-white bg-red-600 shadow rounded px-1 py-2" onclick="clearContractForm()" value="Clear Form">
 				</div>
 				</form>
 			</div>
@@ -178,6 +180,18 @@ if ($_SESSION['usertype'] != 'admin') {
 	}
 
 	document.getElementById('contract_id').value = makeid(9);
+	document.getElementById('username').value = makeid(6);
+	document.getElementById('password').value = makeid(6);
+
+	function clearContractForm(){
+		//Clearing The company Contract Form data
+		document.companyContractForm.reset();
+		//Generating New Contract Information
+		document.getElementById('contract_id').value = makeid(9);
+		document.getElementById('username').value = makeid(6);
+		document.getElementById('password').value = makeid(6);
+	}
+		
 </script>
 
 </html>

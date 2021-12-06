@@ -1,4 +1,5 @@
 <?php
+include_once('../resources/connection.php');
 // We need to use sessions, so you should always start sessions using the below code.
 session_start();
 // If the user is not logged in redirect to the login page...
@@ -28,7 +29,7 @@ if (!isset($_SESSION['loggedin'])) {
 			<div class="bg-gray-900 w-1/4 py-10 ">
 				<div class="text-gray-100 font-light flex-wrap gap-1/2">
 					<a href="index.php">
-						<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 				cusror-pointer border-b border-red-800 shadow-lg">
 							<p><i class="fas fa-tachometer-alt"></i> Dashboard</p>
 						</div>
@@ -52,7 +53,7 @@ if (!isset($_SESSION['loggedin'])) {
                         </a>
 
 					<a href="changepassword.php">
-						<div class="py-4 px-5 bg-gray-800 text-white mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+						<div class="py-4 px-5 bg-white text-gray-800 text-white mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 					cusror-pointer border-b border-red-800 shadow-lg">
 							<p><i class="fas fa-user-cog"></i> Settings</p>
 						</div>
@@ -81,7 +82,8 @@ if (!isset($_SESSION['loggedin'])) {
 						if ($_SESSION["loggedin"] == "admin" || $_POST["user"] == "admin") {
 							$query = mysqli_query($con, "UPDATE users SET password='$_POST[nwpswrd]' WHERE id ='$_POST[id]' and password='$_POST[oldpswrd]'");
 							if ($query) {
-								$msgpass = "<b><font color='#009900'>Password updated successfully</font></b>";
+								//$msgpass = "<b><font color='#009900'>Password updated successfully</font></b>";
+								header('Location: ../logout.php?update=Password updated successfully');
 							} else {
 								$msgpass = "<b><font color='#FF0000'>Failed to update password</font></b>";
 							}

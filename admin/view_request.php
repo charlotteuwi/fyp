@@ -42,7 +42,7 @@ if ($_SESSION['usertype'] != 'admin') {
 						</div>
 					</a>
 					<a href="add-contract.php">
-						<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+						<div class="py-4 px-5  bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 							<p><i class="fas fa-file-signature"></i></p>
 							<p class="ml-2"> Contracts</p>
 
@@ -56,7 +56,7 @@ if ($_SESSION['usertype'] != 'admin') {
 						</div>
 						</a>
 						<a href="view_request.php">
-							<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+							<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 			        cusror-pointer border-b border-red-800 shadow-lg">
 								<p><i class="fas fa-comments"></i> Requests </p>
 							</div>
