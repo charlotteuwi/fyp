@@ -90,10 +90,10 @@ if ($_SESSION['usertype'] != 'admin') {
 						</a>
 					</div>
 				</div>
-
-				<div class="h-200 w-full bg-white px-16 py-10 mt-8 flex-wrap items-center justify-center">
+				<div class="flex w-full">
+				<div style="height: 440px; overflow-y: scroll;" class="w-full bg-white px-4 flex-wrap items-center justify-center">
 					<table class="w-full" cellspacing="10">
-						<tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="4">
+						<tr class="sticky top-0 bg-gray-900 text-white border-b border-gray-900 rounded-r-md rounded-l-md" colspan="4">
 							<th class="p-2"> Id </th>
 							<th class="p-2"> Contract ID </th>
 							<th class="p-2"> Company Name </th>
@@ -113,7 +113,62 @@ if ($_SESSION['usertype'] != 'admin') {
 							return round($diff / 86400);
 						}
 
-						$query = "SELECT id, contract_id ,company_name, end_date,status from companycontracts"; // Fetch all the records from the table address
+						$query = "SELECT id, contract_id ,company_name, end_date,status, phone_number from companycontracts"; // Fetch all the records from the table address
+						$result = mysqli_query($con, $query);
+
+						while ($array = mysqli_fetch_array($result)) {
+						?>
+							<tr>
+								<td class="p-2"><?php echo $array['id']; ?></td>
+								<td class="p-2"><?php echo $array[1]; ?></td>
+								<td class="p-2"><?php echo $array[2]; ?></td>
+								<?php
+								$date1 = date('Y-m-d');
+								$date2 = $array[3];
+
+								$dateDiff =  dateDifference($date1, $date2);
+
+								if ($dateDiff < 0) {
+									$contractColor = "bg-red-500 font-bold text-gray-900 p-2";
+								} else if ($dateDiff < 7) {
+									$contractColor = "bg-yellow-500 font-bold text-gray-900 p-2";
+								} else {
+									$contractColor = "bg-green-500 font-bold text-gray-900 p-2";
+								}
+								?>
+								<td class="<?php echo $contractColor ?>">
+									<?php echo $dateDiff; ?>
+								</td>
+								</td>
+								<td class="p-2"><?php echo $array[4]; ?></td>
+								<td class="p-2">
+									<a href="update-company-contract-form.php?id=<?php echo $array['id']; ?>">
+										<i class="fas fa-user-edit"></i>
+									</a>
+									<a href="sms-notification.php?phone=<?php echo $array[5]; ?>&days=<?php echo $dateDiff ?>&name=<?php echo $array[2]; ?>">
+										<i class="fas fa-sms"></i>
+									</a>
+								</td>
+							</tr>
+
+						<?php } ?>
+					</table>
+				</div>
+				<div style="height: 440px; overflow-y: scroll;" class="w-full bg-white px-4 flex-wrap items-center justify-center">
+					<table class="w-full" cellspacing="10">
+						<tr class="sticky top-0 bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="4">
+							<th class="p-2"> Id </th>
+							<th class="p-2"> Contract ID </th>
+							<th class="p-2"> Company Name </th>
+							<th class="p-2"> Rem .Days </th>
+							<th class="p-2"> Status </th>
+							<th class="p-2"> Actions </th>
+						</tr>
+
+						<?php
+						include_once('../resources/connection.php');
+
+						$query = "SELECT id, contract_id ,employee_name, end_date,status,phone_number from usercontracts"; // Fetch all the records from the table address
 						$result = mysqli_query($con, $query);
 
 						while ($array = mysqli_fetch_array($result)) {
@@ -140,11 +195,20 @@ if ($_SESSION['usertype'] != 'admin') {
 								</td>
 								</td>
 								<td class="p-2"><?php echo $array[4]; ?></td>
-								<td class="p-2"><a href="update-company-contract-form.php?id=<?php echo $array['id']; ?>"><i class="fas fa-user-edit"></i></a></td>
+								<td class="p-2">
+									<a href="update-company-contract-form.php?id=<?php echo $array['id']; ?>">
+										<i class="fas fa-user-edit"></i>
+									</a>
+									<a href="sms-notification.php?phone=<?php echo $array[5]; ?>&days=<?php echo $dateDiff ?>&name=<?php echo $array[2]; ?>">
+										<i class="fas fa-sms"></i>
+									</a>
+								</td>
 							</tr>
 
 						<?php } ?>
 					</table>
+				</div>
+
 				</div>
 			</div>
 
