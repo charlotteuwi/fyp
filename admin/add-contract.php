@@ -130,6 +130,10 @@ if ($_SESSION['usertype'] != 'admin') {
 
 								if ($dateDiff < 0) {
 									$contractColor = "bg-red-500 font-bold text-gray-900 p-2";
+									//Update Contract Status to Expired
+									$query = "UPDATE `companycontracts` SET `status`='Expired' where `contract_id`='$array[1]'"; 
+									$result1 = mysqli_query($con, $query);
+
 								} else if ($dateDiff < 7) {
 									$contractColor = "bg-yellow-500 font-bold text-gray-900 p-2";
 								} else {
@@ -184,6 +188,8 @@ if ($_SESSION['usertype'] != 'admin') {
 								$dateDiff =  dateDifference($date1, $date2);
 								if ($dateDiff < 0) {
 									$contractColor = "bg-red-500 font-bold text-gray-900 p-2";
+									$query = "UPDATE `usercontracts` SET `status`='Expired' where `contract_id`='$array[1]'"; 
+									$result2 = mysqli_query($con, $query);
 								} else if ($dateDiff < 7) {
 									$contractColor = "bg-yellow-500 font-bold text-gray-900 p-2";
 								} else {
