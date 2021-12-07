@@ -138,7 +138,7 @@ if ($_SESSION['usertype'] != 'admin') {
 
 
 								<?php
-								$query = "SELECT count(id) as 'canceled' from companycontracts where status='CANCELED'";
+								$query = "SELECT count(id) as 'canceled' from companycontracts where status='cancel'";
 								$result = mysqli_query($con, $query);
 
 								while ($array = mysqli_fetch_array($result)) {
