@@ -45,12 +45,12 @@ if ($_SESSION['usertype'] != 'admin') {
 							<p><i class="fas fa-file-signature"></i> Contracts</p>
 						</div>
 					</a>
-					
+
 					<a href="#">
-					<div class="py-4 px-5 bg-gray-800 text-white mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+						<div class="py-4 px-5 bg-gray-800 text-white mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 		        cusror-pointer border-b border-red-800 shadow-lg">
-						<p><i class="fas fa-file-alt"></i> Reports</p>
-					</div>
+							<p><i class="fas fa-file-alt"></i> Reports</p>
+						</div>
 					</a>
 					<a href="view_request.php">
 						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
@@ -79,120 +79,143 @@ if ($_SESSION['usertype'] != 'admin') {
 
 			<div class="bg-gray-200 w-3/4 p-8 text-gray-100">
 				<div class="bg-gray-200 flex rounded">
-					<div class="flex-wrap p-2 rounded w-1/3">
-						<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
+					<a href="reports/all-contracts.php" class="w-full">
+						<div class="flex-wrap p-2 rounded">
+							<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
 
-							<?php
-							$query = "SELECT count(id) as 'allcontracts'  from companycontracts";
-							$result = mysqli_query($con, $query);
+								<?php
+								$query = "SELECT count(id) as 'allcontracts'  from companycontracts";
+								$result = mysqli_query($con, $query);
 
-							while ($array = mysqli_fetch_array($result)) {
-								echo $array['allcontracts'] ?? 0;
-							}
-							?>
+								$query1 = "SELECT count(id) as 'allusercontracts'  from usercontracts";
+								$result1 = mysqli_query($con, $query1);
+
+								while ($array = mysqli_fetch_array($result)) {
+									$companies = $array['allcontracts'] ?? 0;
+								}
+
+								while ($array = mysqli_fetch_array($result1)) {
+									$employees = $array['allusercontracts'] ?? 0;
+								}
+
+								echo $companies + $employees;
+								
+								?>
 
 
+							</div>
+							<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
+								All Contracts
+							</div>
 						</div>
-						<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
-							All Contracts
-						</div>
-					</div>
-					<div class="flex-wrap p-2 rounded w-1/3 ">
-						<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
+					</a>
+
+					<a href="reports/active-contracts.php" class="w-full">
+						<div class="flex-wrap p-2 rounded ">
+							<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
 
 
-							<?php
-							$query = "SELECT count(id) as 'activecontracts' from companycontracts where status='ACTIVE'";
-							$result = mysqli_query($con, $query);
+								<?php
+								$query = "SELECT count(id) as 'activecontracts' from companycontracts where status='ACTIVE'";
+								$result = mysqli_query($con, $query);
 
-							while ($array = mysqli_fetch_array($result)) {
-								echo $array['activecontracts'] ?? 0;
-							}
-							?>
+								while ($array = mysqli_fetch_array($result)) {
+									echo $array['activecontracts'] ?? 0;
+								}
+								?>
+							</div>
+							<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
+								Active Contracts
+							</div>
 						</div>
-						<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
-							Active Contracts
-						</div>
-					</div>
+					</a>
+
 				</div>
 				<div class="bg-gray-200 flex rounded">
-					<div class="flex-wrap p-2 rounded w-1/3">
-						<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
+					<a href="reports/canceled-contracts.php" class="w-full">
+						<div class="flex-wrap p-2 rounded">
+							<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
 
 
-							<?php
-							$query = "SELECT count(id) as 'canceled' from companycontracts where status='CANCELED'";
-							$result = mysqli_query($con, $query);
+								<?php
+								$query = "SELECT count(id) as 'canceled' from companycontracts where status='CANCELED'";
+								$result = mysqli_query($con, $query);
 
-							while ($array = mysqli_fetch_array($result)) {
-								echo $array['canceled'] ?? 0;
-							}
-							?>
+								while ($array = mysqli_fetch_array($result)) {
+									echo $array['canceled'] ?? 0;
+								}
+								?>
 
+							</div>
+							<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
+								Canceled
+							</div>
 						</div>
-						<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
-							canceled
+					</a>
+
+					<a href="reports/expiring-this-week.php" class="w-full">
+						<div class="flex-wrap p-2 rounded">
+							<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
+
+
+								<?php
+								$query = "SELECT count(id) as 'expired' from companycontracts where status='EXPIRED'";
+								$result = mysqli_query($con, $query);
+
+								while ($array = mysqli_fetch_array($result)) {
+									echo $array['expired'] ?? 0;
+								}
+								?>
+							</div>
+							<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
+								Expiring this week
+							</div>
 						</div>
-					</div>
-
-					<div class="flex-wrap p-2 rounded w-1/3 ">
-						<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
-
-
-							<?php
-							$query = "SELECT count(id) as 'expired' from companycontracts where status='EXPIRED'";
-							$result = mysqli_query($con, $query);
-
-							while ($array = mysqli_fetch_array($result)) {
-								echo $array['expired'] ?? 0;
-							}
-							?>
-						</div>
-						<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
-							Expiring this week
-						</div>
-					</div>
+					</a>
 				</div>
 				<div class="bg-gray-200 flex rounded">
-					<div class="flex-wrap p-2 rounded w-1/3">
-						<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
-							<?php
-							$query = "SELECT count(id) as 'status' from requests where status='PENDING'";
-							$result = mysqli_query($con, $query);
 
-							while ($array = mysqli_fetch_array($result)) {
-								echo $array['status'] ?? 0;
-							}
-							?>
+					<a href="reports/all-requests.php" class="w-full">
+						<div class="flex-wrap p-2 rounded">
+							<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
+								<?php
+								$query = "SELECT count(id) as 'status' from requests where status='PENDING'";
+								$result = mysqli_query($con, $query);
 
-
-
+								while ($array = mysqli_fetch_array($result)) {
+									echo $array['status'] ?? 0;
+								}
+								?>
+							</div>
+							<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
+								All Requests
+							</div>
 						</div>
-						<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
-							requests
-						</div>
-					</div>
+					</a>
 
-					<div class="flex-wrap p-2 rounded w-1/3 ">
-						<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
+					<a href="reports/answered-requests.php" class="w-full">
 
-							<?php
-							$query = "SELECT count(id) as 'action' from requestsanswers ";
-							$result = mysqli_query($con, $query);
+						<div class="flex-wrap p-2 rounded">
+							<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
 
-							while ($array = mysqli_fetch_array($result)) {
-								echo $array['action'] ?? 0;
-							}
-							?>
+								<?php
+								$query = "SELECT count(id) as 'action' from requestsanswers ";
+								$result = mysqli_query($con, $query);
+
+								while ($array = mysqli_fetch_array($result)) {
+									echo $array['action'] ?? 0;
+								}
+								?>
+							</div>
+							<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
+								Answered Requests
+							</div>
 						</div>
-						<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
-							answer Requests
-						</div>
-					</div>
-				</div> 
-			</div> 
-		</div> 
-	</div> 
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 	</boby>
 
 </html>
