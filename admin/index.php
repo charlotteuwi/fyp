@@ -153,7 +153,7 @@ if ($_SESSION['usertype'] != 'admin') {
 						</div>
 					</a>
 
-					<a href="reports/expiring-this-week.php" class="w-full">
+					<a href="reports/expired-contracts.php" class="w-full">
 						<div class="flex-wrap p-2 rounded">
 							<div class="rounded-t p-x1 py-6 bg-gray-900 text-2xl font-bold flex items-center justify-center">
 
@@ -168,7 +168,7 @@ if ($_SESSION['usertype'] != 'admin') {
 								?>
 							</div>
 							<div class="rounded-b px-1 py-2 bg-red-600 text-xs flex items-center justify-center">
-								Expiring this week
+								Expired Contracts
 							</div>
 						</div>
 					</a>
