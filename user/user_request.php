@@ -42,12 +42,18 @@ include_once('../resources/connection.php');
                         </div>
                     </a>
 
-                    <a href="user-request.php">
+                    <a href="company_request.php">
                         <div class="py-4 px-5 bg-white text-gray-800 text-white mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 		        cusror-pointer border-b border-red-800 shadow-lg">
                             <p><i class="fas fa-file-alt"></i> Request</p>
                         </div>
                     </a>
+                    <a href="changepassword.php">
+						<div class="py-4 px-5 bg-gray-800 text-white-800 text-white mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+					cusror-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-user-cog"></i> Settings</p>
+						</div>
+					</a>
                     <a href="../logout.php">
                         <div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
                             <p><i class="fas fa-user-cog"></i></p>
