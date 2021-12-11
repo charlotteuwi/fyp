@@ -13,6 +13,7 @@ if ($_SESSION['usertype'] != 'user') {
     exit;
 }
 include_once('../../resources/connection.php');
+
 $contract_id=$_POST['contract_id'];
 $manager=$_POST['manager'];
 $phone_number=$_POST['phone_number'];
@@ -28,7 +29,6 @@ if(isset($_POST['cancel'])){
         echo " Data Inserted";
     }else{
         echo " Data not Inserted";
-        exit;
     }
 
 }
