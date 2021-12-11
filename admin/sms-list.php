@@ -88,19 +88,12 @@ if ($_SESSION['usertype'] != 'admin') {
 						<th class="p-2"> Message</th>
 						<th class="p-2"> Status </th>
                         <th class="p-2"> Resend </th>
-						
-                        
-						
-						
+					
 					</tr>
                     <tr class=" text-gray-900 p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="6">
 						<th class="p-2">  ID1 </th>
 						<th class="p-2"> Phone_Number1 </th>
 						<th class="p-2"> Message1</th>
 						<th class="p-2"> Status1</th>
-                        <th class="p-2" colspan="2">resend </th>
-					
-                        
-						
-						
+                        <th class="p-2" colspan="2">resend </th>	
 					</tr>
