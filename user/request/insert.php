@@ -16,11 +16,12 @@ include_once('../../resources/connection.php');
 $contract_id=$_POST['contract_id'];
 $manager=$_POST['manager'];
 $phone_number=$_POST['phone_number'];
+$user_reason = $_POST['user_reason'];
 $day = date('d-m-Y');
 
 if(isset($_POST['cancel'])){
     //query
-    $sql=mysqli_query($con, "INSERT INTO `requests` VALUES('','$contract_id','$manager', '$phone_number', 'cancel', 'pending', '$day', 'user')")or die(mysqli_error($con));
+    $sql=mysqli_query($con, "INSERT INTO `requests` VALUES('','$contract_id','$manager', '$phone_number', 'cancel', '$user_reason', 'pending', '$day', 'user')")or die(mysqli_error($con));
 
     if($sql){
         header('Location: ../../notification.php?notification=Your request have been recorded');
