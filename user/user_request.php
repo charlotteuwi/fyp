@@ -106,8 +106,8 @@ include_once('../resources/connection.php');
                         }
                         ?>
                     </form>
-                    <p class="font-medium my-2"> Pending Request</p>
-                    <table class="w-full">
+                    <table class="w-full text-xs">
+                    <tr class="font-medium py-2 text-center p-4 text-gray-200 bg-gray-900"><td colspan="8" class="p-2 rounded-tr-lg rounded-tl-lg"> Pending Requests </td></tr>
                         <tr class="bg-white text-gray-900 font-medium border-l border-r border-gray-900">
 
                             <td class="p-2 ml-2 border-r border-gray-900">Contract_Id </td>
@@ -131,7 +131,7 @@ include_once('../resources/connection.php');
 
                                 $stmt->fetch();
                         ?>
-                                <tr class="bg-gray-800 border-b border-gray-900 text-gray-300">
+                                <tr class="bg-gray-200 border-b border-gray-900 text-gray-800">
                                     <td class="p-2 ml-2 border-r border-gray-900"><?php echo $contract_id; ?> </td>
                                     <td class="p-2 ml-2 border-r border-gray-900"><?php echo $client_name; //selected as manager 
                                                                                     ?> </td>
@@ -148,18 +148,18 @@ include_once('../resources/connection.php');
 
                     </table>
 
-                    <p class="font-medium my-2">Requests Answers</p>
-                    <div class="bg-green-500">
+                    <div class="mt-4">
                         <table class="w-full text-xs">
-                            <tr class="bg-green-600 font-medium text-white border-l border-r border-gray-900">
-                                <td class="p-4 ml-4">Contract ID</td>
-                                <td class="p-4 ml-4">Client Name </td>
-                                <td class="p-4 ml-4">Phone Number</td>
-                                <td class="p-4 ml-4">Action</td>
-                                <td class="p-4 ml-4">User Reason</td>
-                                <td class="p-4 ml-4">Status</td>
-                                <td class="p-4 ml-4">Admin Reason</td>
-                                <td class="p-4 ml-4">Date</td>
+                            <tr class="font-medium py-2 text-center p-4 text-gray-200 bg-gray-900"><td colspan="8" class="p-2 rounded-tr-lg rounded-tl-lg"> Requests Answers</td></tr>
+                            <tr class="bg-green-600 shadow font-medium text-white border-l border-r border-gray-900">
+                                <td class="p-2 ml-2">Contract ID</td>
+                                <td class="p-2 ml-2">Client Name </td>
+                                <td class="p-2 ml-2">Phone Number</td>
+                                <td class="p-2 ml-2">Action</td>
+                                <td class="p-2 ml-2">User Reason</td>
+                                <td class="p-2 ml-2">Status</td>
+                                <td class="p-2 ml-2">Admin Reason</td>
+                                <td class="p-2 ml-2">Date</td>
                             </tr>
 
                             <?php
@@ -170,7 +170,7 @@ include_once('../resources/connection.php');
                             ?>
 
 
-                                <tr class=" text-xs bg-gray-800 border-b border-gray-900 text-gray-300">
+                                <tr class=" text-xs bg-white border-b border-gray-900 text-gray-700">
                                     <td class="p-2 ml-2 border-r border-gray-900"><?php echo $array['contract_id']; ?> </td>
                                     <td class="p-2 ml-2 border-r border-gray-900"><?php echo $array['manager']; //selected as manager 
                                                                                     ?> </td>

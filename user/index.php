@@ -83,13 +83,13 @@ if ($_SESSION['usertype'] != 'user'){
                     <div class="text-lg font-bold text-gray-800"><?php echo $contract_id; ?></div>
                 </div>
 				<div class="text-right">
-                    <div class="text-xs font-bold text-gray-600">Employee_Name</div>
+                    <div class="text-xs font-bold text-gray-600">Employee Name</div>
                     <div class="text-lg font-bold text-gray-800"><?php echo $employee_name; ?></div>
                 </div>
 			</div>
 			<div class="flex items-center justify-between">				
-			    <div class="text-right">
-                    <div class="text-xs font-bold text-gray-600">Phone_Number</div>
+			    <div class="text-left">
+                    <div class="text-xs font-bold text-gray-600">Phone Number</div>
                     <div class="text-lg font-bold text-gray-800"><?php echo $phone_number; ?></div>
                 </div>
 				<div class="text-right">
@@ -99,11 +99,11 @@ if ($_SESSION['usertype'] != 'user'){
             </div>
             <div class="flex items-center justify-between mt-4">
                 <div>
-                    <div class="text-xs font-bold text-gray-600">Start_date</div>
+                    <div class="text-xs font-bold text-gray-600">Start date</div>
                     <div class="text-lg font-bold text-gray-800"><?php echo $start_date; ?></div>
                 </div>
                 <div class="text-right">
-                    <div class="text-xs font-bold text-gray-600">End_Date</div>
+                    <div class="text-xs font-bold text-gray-600">End Date</div>
                     <div class="text-lg font-bold text-gray-800"><?php echo $end_date; ?></div>
                 </div>
             </div>            
@@ -114,13 +114,13 @@ if ($_SESSION['usertype'] != 'user'){
                     <div class="text-lg font-bold text-gray-800"><?php echo $address ?></div>
                 </div>
                 <div class="text-right">
-                    <div class="text-xs font-bold text-gray-600">Download file</div>
+                    <div class="text-xs font-bold text-gray-600">File Name</div>
                     <div class="text-lg font-bold text-gray-800"><?php echo $file; ?></div>
                 </div>
             </div>
 			<div class="text-lg font-bold text-gray-800">Preview Link</div>
                     <div class="text-base  font-normal text-blue-600">
-                    <a href="../admin/employee-contract/upload/<?php echo $file ;?>">Download</a>
+                    <a target=”_blank” href="../admin/employee-contract/upload/<?php echo $file ;?>">Click to preview</a>
                     </div>
                 
 
@@ -132,7 +132,7 @@ if ($_SESSION['usertype'] != 'user'){
                     </div>
                 </div>
 				<div class="text-right">
-                    <div class="text-xs font-bold text-gray-600">registered_on</div>
+                    <div class="text-xs font-bold text-gray-600">Registered On</div>
                     <div class="text-lg font-bold text-gray-800"><?php echo $registered_on; ?></div>
                 </div>
             </div>

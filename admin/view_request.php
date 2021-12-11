@@ -78,7 +78,7 @@ if ($_SESSION['usertype'] != 'admin') {
 
 			<div class="h-200 w-full px-16 mt-8 flex-wrap items-center justify-center">
 
-				<table class="w-full rounded shadow" >
+				<table class="w-full rounded shadow">
 					<tr class="text-left text-xs p-2 border-b border-gray-900 rounded-r-md rounded-l-md">
 						<th class="p-2 text-center bg-red-700 text-white" colspan="11"> Pending Requests </th>
 					</tr>
@@ -122,8 +122,10 @@ if ($_SESSION['usertype'] != 'admin') {
 							<input type="hidden" name="usertype" value="<?php echo $array[8]; //Request Type
 																		?>">
 							<tr class="text-xs text-left">
-								<td class="p-2 "><p class="bg-green-600 rounded p-1 text-white"><?php echo $array[1]; //contract_id; 
-												?></p></td>
+								<td class="p-2 ">
+									<p class="bg-green-600 rounded p-1 text-white"><?php echo $array[1]; //contract_id; 
+																					?></p>
+								</td>
 								<td class="p-2"><?php echo $array[2]; //manager
 												?></td>
 								<td class="p-2"><?php echo $array[3]; //phone_number
@@ -134,8 +136,12 @@ if ($_SESSION['usertype'] != 'admin') {
 								<td class="p-2"><?php echo $array[5]; //User Reason
 												?></td>
 
-								<td class="p-2"><?php echo $array[6]; //status
-												?></td>
+								<td class="p-2">
+									<p class="p-1 bg-yellow-600 text-white rounded"><?php if ($array[6] == 'pending') {
+																						echo "Pending";
+																					} //status
+																					?></p>
+								</td>
 								<td class="p-2"><textarea required class="rounded border border-green-600 shadow focus:outline-none px-2 py-1" name="admin_reason" id=""></textarea></td>
 
 								<td class="p-2"><?php echo $array[7]; //Admin Reason
@@ -181,38 +187,53 @@ if ($_SESSION['usertype'] != 'admin') {
 
 				<form method="POST" action="request/update.php">
 
-					<input type="hidden" name="contract_id" value="<?php echo $array[1] //contract_id; 
+					<input type="hidden" name="contract_id" value="<?php echo $array[1];
 																	?>">
-					<input type="hidden" name="manager" value="<?php echo $array[2] //contract_id; 
+					<input type="hidden" name="manager" value="<?php echo $array[2];
 																?>">
-					<input type="hidden" name="phone_number" value="<?php echo $array[3] //contract_id; 
+					<input type="hidden" name="phone_number" value="<?php echo $array[3];
 																	?>">
-					<input type="hidden" name="action" value="<?php echo $array[4] //contract_id; 
+					<input type="hidden" name="action" value="<?php echo $array[4];
 																?>">
-					<input type="hidden" name="status" value="<?php echo $array[5] //contract_id; 
+					<input type="hidden" name="status" value="<?php echo $array[5];
 																?>">
-					<input type="hidden" name="date" value="<?php echo $array[6] //contract_id; 
+					<input type="hidden" name="date" value="<?php echo $array[6];
 															?>">
-					<input type="hidden" name="date" value="<?php echo $array[7] //contract_id; 
+					<input type="hidden" name="date" value="<?php echo $array[7];
 															?>">
 
 					<tr class="text-xs">
-						<td class="p-2"><?php echo $array[1] //contract_id; 
-							?></td>
-						<td class="p-2"><?php echo $array[2]; //manager
-							?></td>
-						<td class="p-2"><?php echo $array[3]; //phone_number
-							?></td>
-						<td class="p-2"><?php echo $array[4]; //action
-							?></td>
-						<td class="p-2"><?php echo $array[5]; //status
-							?></td>
-						<td class="p-2"><?php echo $array[7]; //date
-							?></td>
-						<td class="p-2"><?php echo $array[6]; //date
-							?></td>
-						<td class="p-2"><?php echo $array[8]; //date
-							?></td>
+						<td class="p-2"><?php echo $array[1];
+										?></td>
+						<td class="p-2"><?php echo $array[2];
+										?></td>
+						<td class="p-2"><?php echo $array[3];
+										?></td>
+						<td class="p-2"><?php echo $array[4];
+										?></td>
+
+						<td class="p-2 "><?php echo $array[5];
+											?></td>
+						<?php
+						// Use green color for Approved and Red for Rejected
+						$statusName = '';
+						$colorClass = '';
+						if ($array[7] == 'approved') {
+							$colorClass = 'rounded bg-green-600 text-white';
+							$statusName = 'Approved';
+						} elseif ($array[7] == 'Rejected') {
+							$colorClass = 'rounded bg-red-600 text-white';
+							$statusName = 'Rejected';
+						}
+						?>
+						<td class="p-2">
+							<p class="p-1  <?php echo $colorClass; ?>"><?php echo $statusName;
+																		?></p>
+						</td>
+						<td class="p-2"><?php echo $array[6];
+										?></td>
+						<td class="p-2"><?php echo $array[8];
+										?></td>
 					</tr>
 
 				</form>
