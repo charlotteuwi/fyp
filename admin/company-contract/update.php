@@ -21,10 +21,9 @@ if (isset($_POST['update'])) {
     $query=mysqli_query($con, "UPDATE companycontracts set company_name='$company_name', tin_number='$tin_number', description='$description', manager='$manager', phone_number='$phone_number'
  , address='$address', start_date='$start_date', end_date='$end_date', isco_supervisor='$isco_supervisor' where id='$id'")or die(mysqli_error($con));
     if ($query) {
-        echo "<script>alert('You have successfully update the data');</script>";
-        echo "<script type='text/javascript'> document.location ='../add-contract.php'; </script>";
+        header('Location: ../../notification.php?notification=Data Successfully Updated');
     } else {
-        echo "<script>alert('Something Went Wrong. Please try again');</script>";
+        header('Location: ../../notification.php?notification=Data Failed Update');
     }
 }
 ?>

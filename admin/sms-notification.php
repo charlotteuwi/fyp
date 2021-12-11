@@ -1,4 +1,7 @@
 <?php
+include_once('../resources/connection.php');
+
+
 $number = $_GET['phone'];
 $days = $_GET['days'];
 $name = $_GET['name'];
@@ -26,9 +29,15 @@ $httpcode=curl_getinfo($ch,CURLINFO_HTTP_CODE);
 
 curl_close($ch);
 
+$sent_as_on =  date('d-m-Y');
+
 if($httpcode == 200){
+    $query = "INSERT INTO `smsnotification`(`phone_number`, `message`, `status`, `sent_as_on`) VALUES ('$number','$message','Sent','$sent_as_on');";
+    $result = mysqli_query($con, $query);
     header('Location: ../notification.php?notification=Message Sent to The User');
 } else {
+    $query = "INSERT INTO `smsnotification`(`phone_number`, `message`, `status`, `sent_as_on`) VALUES ('$number','$message','Not Sent','$sent_as_on');";
+    $result = mysqli_query($con, $query);
     header('Location: ../notification.php?notification=Message Not Sent to The User');
 }
 

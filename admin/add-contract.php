@@ -130,7 +130,7 @@ if ($_SESSION['usertype'] != 'admin') {
 
 								if ($dateDiff < 0) {
 									$contractColor = "bg-red-500 font-bold text-gray-900 p-2";
-									//Update Contract Status to Expired
+									//Update Contract Status to Expired Automatic
 									$query = "UPDATE `companycontracts` SET `status`='Expired' where `contract_id`='$array[1]'"; 
 									$result1 = mysqli_query($con, $query);
 
@@ -139,12 +139,19 @@ if ($_SESSION['usertype'] != 'admin') {
 								} else {
 									$contractColor = "bg-green-500 font-bold text-gray-900 p-2";
 								}
+								
+								//Update Contract to Active Asutomatically
+								if($dateDiff > 0 && $array[4] == 'Expired'){
+									$query = "UPDATE `companycontracts` SET `status`='ACTIVE' where `contract_id`='$array[1]'"; 
+									$result2 = mysqli_query($con, $query);
+								}
+
 								?>
 								<td class="<?php echo $contractColor ?>">
 									<?php echo $dateDiff; ?>
 								</td>
 								</td>
-								<td class="p-2"><?php echo $array[4]; ?></td>
+								<td class="p-2"><?php echo $array[4] ; ?></td>
 								<td class="p-2">
 									<a href="update-company-contract-form.php?id=<?php echo $array['id']; ?>">
 										<i class="fas fa-user-edit"></i>
@@ -188,12 +195,20 @@ if ($_SESSION['usertype'] != 'admin') {
 								$dateDiff =  dateDifference($date1, $date2);
 								if ($dateDiff < 0) {
 									$contractColor = "bg-red-500 font-bold text-gray-900 p-2";
+
+									//Set contract to expired automatically when it has less than 0
 									$query = "UPDATE `usercontracts` SET `status`='Expired' where `contract_id`='$array[1]'"; 
 									$result2 = mysqli_query($con, $query);
 								} else if ($dateDiff < 7) {
 									$contractColor = "bg-yellow-500 font-bold text-gray-900 p-2";
 								} else {
 									$contractColor = "bg-green-500 font-bold text-gray-900 p-2";
+								}
+
+								//Update Contract to Active Asutomatically
+								if($dateDiff > 0 && $array[4] == 'Expired'){
+									$query = "UPDATE `usercontracts` SET `status`='ACTIVE' where `contract_id`='$array[1]'"; 
+									$result2 = mysqli_query($con, $query);
 								}
 								?>
 								<td class="<?php echo $contractColor ?>">
@@ -202,7 +217,7 @@ if ($_SESSION['usertype'] != 'admin') {
 								</td>
 								<td class="p-2"><?php echo $array[4]; ?></td>
 								<td class="p-2">
-									<a href="update-company-contract-form.php?id=<?php echo $array['id']; ?>">
+									<a href="update-employee-contract-form.php?id=<?php echo $array['id']; ?>">
 										<i class="fas fa-user-edit"></i>
 									</a>
 									<a href="sms-notification.php?phone=<?php echo $array[5]; ?>&days=<?php echo $dateDiff ?>&name=<?php echo $array[2]; ?>">
