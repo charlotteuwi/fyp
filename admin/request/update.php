@@ -59,7 +59,7 @@ if(isset($_POST['reject'])){
 
     //echo $action;
     //query insert
-    $sql=mysqli_query($con, "INSERT INTO `requestsanswers` (contract_id, manager, phone_number, action, status, date) VALUES('$contract_id','$manager',$phone_number,'$action','Rejected','$date')")or die(mysqli_error($con));
+    $sql=mysqli_query($con, "INSERT INTO `requestsanswers` (contract_id, manager, phone_number, action, status, date, user_reason, admin_reason) VALUES('$contract_id','$manager',$phone_number,'$action','Rejected','$date', '$user_reason', '$admin_reason')")or die(mysqli_error($con));
 
     //query delete 
     $sql1=mysqli_query($con, "DELETE FROM `requests` WHERE contract_id='$contract_id'");
