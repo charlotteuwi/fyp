@@ -25,10 +25,12 @@ $approve=$_POST['status'];
 $usertype=$_POST['usertype'];
 $date=$_POST['date'];
 
+$user_reason = $_POST['user_reason'];
+$admin_reason = $_POST['admin_reason'];
 
 if(isset($_POST['approve'])){
    
-    $sql=mysqli_query($con, "INSERT INTO `requestsanswers` (contract_id, manager, phone_number, action, status, date) VALUES('$contract_id','$manager',$phone_number,'$action','approved','$date')")or die(mysqli_error($con));
+    $sql=mysqli_query($con, "INSERT INTO `requestsanswers` (contract_id, manager, phone_number, action, status, date, user_reason, admin_reason) VALUES('$contract_id','$manager',$phone_number,'$action','approved','$date', '$user_reason', '$admin_reason')")or die(mysqli_error($con));
 
     //query delete 
     $sql1=mysqli_query($con, "DELETE FROM `requests` WHERE contract_id='$contract_id'");
@@ -46,8 +48,8 @@ if(isset($_POST['approve'])){
         
     }
 
-    if($sql && $sql1 && $sql2){
-        header('Location: ../../notification.php?notification=REQUESTS DELETED HERE');    
+    if($sql && $sql1 || $sql2){
+        header('Location: ../../notification.php?notification=Request Changed the Status!');    
         exit;
     }
 

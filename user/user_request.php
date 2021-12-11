@@ -86,14 +86,12 @@ include_once('../resources/connection.php');
                         <?php
 
                         $contract_id = $_SESSION['contract_id'];
-                        $request_number = 0;
                         if ($stmt = $con->prepare('SELECT contract_id, employee_name, phone_number FROM usercontracts WHERE contract_id = ?')) {
                             // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
                             $stmt->bind_param('s', $contract_id);
                             $stmt->execute();
                             // Store the result so we can check if the account exists in the database.
                             $stmt->store_result();
-                            $request_number = $stmt->num_rows;
                             if ($stmt->num_rows > 0) {
                                 $stmt->bind_result($contract_id, $employee_name, $phone_number);
                                 $stmt->fetch();
@@ -108,7 +106,7 @@ include_once('../resources/connection.php');
                         }
                         ?>
                     </form>
-                    <p class="font-medium my-2"><?php echo $request_number; ?> Pending Request</p>
+                    <p class="font-medium my-2"> Pending Request</p>
                     <table class="w-full">
                         <tr class="bg-white text-gray-900 font-medium border-l border-r border-gray-900">
 
@@ -152,47 +150,42 @@ include_once('../resources/connection.php');
 
                     <p class="font-medium my-2">Requests Answers</p>
                     <div class="bg-green-500">
-                    <table class="w-full">
-                        <tr class="bg-green-600 font-medium text-white border-l border-r border-gray-900">
-                            <td class="p-4 ml-4">Contract ID</td>
-                            <td class="p-4 ml-4">Client Name </td>
-                            <td class="p-4 ml-4">Phone Number</td>
-                            <td class="p-4 ml-4">Action</td>
-                            <td class="p-4 ml-4">User Reason</td>
-                            <td class="p-4 ml-4">Status</td>
-                            <td class="p-4 ml-4">Admin Reason</td>
-                            <td class="p-4 ml-4">Date</td>
-                        </tr>
+                        <table class="w-full text-xs">
+                            <tr class="bg-green-600 font-medium text-white border-l border-r border-gray-900">
+                                <td class="p-4 ml-4">Contract ID</td>
+                                <td class="p-4 ml-4">Client Name </td>
+                                <td class="p-4 ml-4">Phone Number</td>
+                                <td class="p-4 ml-4">Action</td>
+                                <td class="p-4 ml-4">User Reason</td>
+                                <td class="p-4 ml-4">Status</td>
+                                <td class="p-4 ml-4">Admin Reason</td>
+                                <td class="p-4 ml-4">Date</td>
+                            </tr>
 
-                        <?php
-                        if ($stmt = $con->prepare('SELECT contract_id, manager,phone_number,action, status, date FROM requestsanswers WHERE contract_id = ?')) {
-                            // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
-                            $stmt->bind_param('s', $contract_id);
-                            $stmt->execute();
-                            // Store the result so we can check if the account exists in the database.
-                            $stmt->store_result();
-                            
-                            if ($stmt->num_rows > 0) {
-                                $stmt->bind_result($contract_id, $client_name, $phone_number, $action, $status, $date);
-                                $stmt->fetch();
-                        ?>
+                            <?php
+                            $query = "SELECT contract_id, manager,phone_number,action, user_reason, admin_reason, status, date FROM requestsanswers WHERE contract_id = '$contract_id'"; // Fetch all the records from the table address
+                            $result = mysqli_query($con, $query);
 
-                                <tr class="bg-gray-800 border-b border-gray-900 text-gray-300">
-                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $contract_id; ?> </td>
-                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $client_name; //selected as manager 
+                            while ($array = mysqli_fetch_array($result)) {
+                            ?>
+
+
+                                <tr class=" text-xs bg-gray-800 border-b border-gray-900 text-gray-300">
+                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $array['contract_id']; ?> </td>
+                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $array['manager']; //selected as manager 
                                                                                     ?> </td>
-                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $phone_number; ?> </td>
-                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $action; ?> </td>
-                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $user_reason; ?> </td>
-                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $status; ?> </td>
-                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $date; ?> </td>
+                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $array['phone_number']; ?> </td>
+                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $array['action']; ?> </td>
+                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $array['user_reason']; ?> </td>
+                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $array['status']; ?> </td>
+                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $array['admin_reason']; ?> </td>
+                                    <td class="p-2 ml-2 border-r border-gray-900"><?php echo $array['date']; ?> </td>
                                 </tr>
-                        <?php
+                            <?php
                             }
-                        }
-                        ?>
+                            ?>
 
-                    </table>
-                    </div>                    
+                        </table>
+                    </div>
 
                 </div>

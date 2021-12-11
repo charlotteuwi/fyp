@@ -48,44 +48,48 @@ if ($_SESSION['usertype'] != 'admin') {
 
 
 						</div>
-						</a>
+					</a>
 					<a href="#">
 						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
 							<p><i class="fas fa-file-alt"></i></p>
 							<p class="ml-2"> Reports</p>
 						</div>
-						</a>
-						<a href="view_request.php">
-							<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+					</a>
+					<a href="view_request.php">
+						<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 			        cusror-pointer border-b border-red-800 shadow-lg">
-								<p><i class="fas fa-comments"></i> Requests </p>
-							</div>
-						</a>
-						<a href="changepassword.php">
-							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-								<p><i class="fas fa-user-cog"></i></p>
-								<p class="ml-2"> Settings</p>
-							</div>
-						</a>
-						<a href="../logout.php">
-							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-								<p><i class="fas fa-user-cog"></i></p>
-								<p class="ml-2"> Logout</p>
-							</div>
-						</a>
+							<p><i class="fas fa-comments"></i> Requests </p>
+						</div>
+					</a>
+					<a href="changepassword.php">
+						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-user-cog"></i></p>
+							<p class="ml-2"> Settings</p>
+						</div>
+					</a>
+					<a href="../logout.php">
+						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-user-cog"></i></p>
+							<p class="ml-2"> Logout</p>
+						</div>
+					</a>
 				</div>
 			</div>
-			
+
 			<div class="h-200 w-full px-16 mt-8 flex-wrap items-center justify-center">
-				
-			<table class="w-full" cellspacing="10">
-			<p class="font-bold">Pending Requests</p>
-					<tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="6">
+
+				<table class="w-full rounded shadow" >
+					<tr class="text-left text-xs p-2 border-b border-gray-900 rounded-r-md rounded-l-md">
+						<th class="p-2 text-center bg-red-700 text-white" colspan="11"> Pending Requests </th>
+					</tr>
+					<tr class="text-left text-xs p-2 border-b border-gray-900 rounded-r-md rounded-l-md">
 						<th class="p-2"> Contract ID </th>
 						<th class="p-2"> Manager </th>
-						<th class="p-2"> Phone_Number </th>
+						<th class="p-2"> Phone Number </th>
 						<th class="p-2"> Actions</th>
+						<th class="p-2"> User Reason </th>
 						<th class="p-2"> Status </th>
+						<th class="p-2"> Admin Reason</th>
 						<th class="p-2"> Date </th>
 						<th class="p-2"> Request Type </th>
 						<th class="p-2" colspan="2"> Response </th>
@@ -101,23 +105,45 @@ if ($_SESSION['usertype'] != 'admin') {
 
 						<form method="POST" action="request/update.php">
 
-							<input type="hidden" name="contract_id" value="<?php echo $array[1]; //contract_id?>">
-							<input type="hidden" name="manager" value="<?php echo $array[2]; //Manager?>">
-							<input type="hidden" name="phone_number" value="<?php echo $array[3]; //Phone Number ?>">
-							<input type="hidden" name="action" value="<?php echo $array[4]; //action ?>">
-							<input type="hidden" name="status" value="<?php echo $array[5]; //status?>">
-							<input type="hidden" name="date" value="<?php echo $array[6]; //date?>">
-							<input type="hidden" name="usertype" value="<?php echo $array[7]; //Request Type?>">
-							<tr>
-								<td><?php echo $array[1]; //contract_id; ?></td>
-								<td><?php echo $array[2]; //manager?></td>
-								<td><?php echo $array[3]; //phone_number?></td>
-								<td><?php echo $array[4]; //action?></td>
-								<td><?php echo $array[5]; //status?></td>
-								<td><?php echo $array[6]; //date?></td>
-								<td><?php echo $array[7]; //Request Type?></td>
-								<td><button type="submit" name="approve" value="">Approve</button></td>
-								<td><button type="submit" name="reject" value="">Reject</button></td>
+							<input type="hidden" name="contract_id" value="<?php echo $array[1]; //contract_id
+																			?>">
+							<input type="hidden" name="manager" value="<?php echo $array[2]; //Manager
+																		?>">
+							<input type="hidden" name="phone_number" value="<?php echo $array[3]; //Phone Number 
+																			?>">
+							<input type="hidden" name="action" value="<?php echo $array[4]; //action 
+																		?>">
+							<input type="hidden" name="user_reason" value="<?php echo $array[5]; //User Reason 
+																			?>">
+							<input type="hidden" name="status" value="<?php echo $array[6]; //status
+																		?>">
+							<input type="hidden" name="date" value="<?php echo $array[7]; //date
+																	?>">
+							<input type="hidden" name="usertype" value="<?php echo $array[8]; //Request Type
+																		?>">
+							<tr class="text-xs text-left">
+								<td class="p-2 "><p class="bg-green-600 rounded p-1 text-white"><?php echo $array[1]; //contract_id; 
+												?></p></td>
+								<td class="p-2"><?php echo $array[2]; //manager
+												?></td>
+								<td class="p-2"><?php echo $array[3]; //phone_number
+												?></td>
+								<td class="p-2"><?php echo $array[4]; //action
+												?></td>
+
+								<td class="p-2"><?php echo $array[5]; //User Reason
+												?></td>
+
+								<td class="p-2"><?php echo $array[6]; //status
+												?></td>
+								<td class="p-2"><textarea required class="rounded border border-green-600 shadow focus:outline-none px-2 py-1" name="admin_reason" id=""></textarea></td>
+
+								<td class="p-2"><?php echo $array[7]; //Admin Reason
+												?></td>
+								<td class="p-2"><?php echo $array[8]; //Date
+												?></td>
+								<td class="p-2"><button class="bg-green-600 text-white p-2 rounded" type="submit" name="approve" value="">Approve</button></td>
+								<td class="p-2"><button class="bg-red-600 text-white p-2 rounded" type="submit" name="reject" value="">Reject</button></td>
 							</tr>
 
 						</form>
@@ -132,14 +158,16 @@ if ($_SESSION['usertype'] != 'admin') {
 	</div>
 
 	<div class="h-200 w-full py-8 mt-2 flex items-center justify-center">
-		<table class="w-full" cellspacing="10">
-		<p class="font-bold">approved Requests</p>
-			<tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="6">
+		<table class="w-full mt-4 rounded shadow">
+			<th class="bg-green-600 text-xs p-2 text-white w-full text-center" colspan="10">Approved Requests</th>
+			<tr class="bg-white text-left text-gray-900 text-xs p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="6">
 				<th class="p-2"> Contract ID </th>
 				<th class="p-2"> Manager </th>
-				<th class="p-2"> Phone_Number </th>
+				<th class="p-2"> Phone Number </th>
 				<th class="p-2"> Actions</th>
+				<th class="p-2"> User Reason </th>
 				<th class="p-2"> Status </th>
+				<th class="p-2"> Admin Reason </th>
 				<th class="p-2"> Date </th>
 			</tr>
 
@@ -165,18 +193,25 @@ if ($_SESSION['usertype'] != 'admin') {
 																?>">
 					<input type="hidden" name="date" value="<?php echo $array[6] //contract_id; 
 															?>">
-					<tr>
-						<td><?php echo $array[1] //contract_id; 
+					<input type="hidden" name="date" value="<?php echo $array[7] //contract_id; 
+															?>">
+
+					<tr class="text-xs">
+						<td class="p-2"><?php echo $array[1] //contract_id; 
 							?></td>
-						<td><?php echo $array[2]; //manager
+						<td class="p-2"><?php echo $array[2]; //manager
 							?></td>
-						<td><?php echo $array[3]; //phone_number
+						<td class="p-2"><?php echo $array[3]; //phone_number
 							?></td>
-						<td><?php echo $array[4]; //action
+						<td class="p-2"><?php echo $array[4]; //action
 							?></td>
-						<td><?php echo $array[5]; //status
+						<td class="p-2"><?php echo $array[5]; //status
 							?></td>
-						<td><?php echo $array[6]; //date
+						<td class="p-2"><?php echo $array[7]; //date
+							?></td>
+						<td class="p-2"><?php echo $array[6]; //date
+							?></td>
+						<td class="p-2"><?php echo $array[8]; //date
 							?></td>
 					</tr>
 

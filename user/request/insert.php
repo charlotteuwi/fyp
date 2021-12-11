@@ -34,7 +34,7 @@ if(isset($_POST['cancel'])){
 }
 if(isset($_POST['renew'])){
     //query
-    $sql=mysqli_query($con, "INSERT INTO `requests` VALUES('','$contract_id','$manager', '$phone_number', 'renew', 'pending', '$day', 'user')")or die(mysqli_error($con));
+    $sql=mysqli_query($con, "INSERT INTO `requests` VALUES('','$contract_id','$manager', '$phone_number', 'renew', '$user_reason', 'pending', '$day', 'user')")or die(mysqli_error($con));
 
     if($sql){
         header('Location: ../../notification.php?notification=Your request to renew have been recorded');
@@ -45,7 +45,7 @@ if(isset($_POST['renew'])){
 
 }
 if(isset($_POST['update_information'])){
-    $sql=mysqli_query($con, "INSERT INTO `requests` VALUES('','$contract_id','$manager', '$phone_number', 'update_information', 'pending', '$day', 'user')")or die(mysqli_error($con));
+    $sql=mysqli_query($con, "INSERT INTO `requests` VALUES('','$contract_id','$manager', '$phone_number', 'Update Information', '$user_reason', 'pending', '$day', 'user')")or die(mysqli_error($con));
 
     if($sql){
         header('Location: ../../notification.php?notification=Your request to Update Information  have been recorded');
