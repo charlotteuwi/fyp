@@ -107,7 +107,9 @@ include_once('../resources/connection.php');
                         ?>
                     </form>
                     <table class="w-full text-xs">
-                    <tr class="font-medium py-2 text-center p-4 text-gray-200 bg-gray-900"><td colspan="8" class="p-2 rounded-tr-lg rounded-tl-lg"> Pending Requests </td></tr>
+                        <tr class="font-medium py-2 text-center p-4 text-gray-200 bg-gray-900">
+                            <td colspan="8" class="p-2 rounded-tr-lg rounded-tl-lg"> Pending Requests </td>
+                        </tr>
                         <tr class="bg-white text-gray-900 font-medium border-l border-r border-gray-900">
 
                             <td class="p-2 ml-2 border-r border-gray-900">Contract_Id </td>
@@ -150,7 +152,9 @@ include_once('../resources/connection.php');
 
                     <div class="mt-4">
                         <table class="w-full text-xs">
-                            <tr class="font-medium py-2 text-center p-4 text-gray-200 bg-gray-900"><td colspan="8" class="p-2 rounded-tr-lg rounded-tl-lg"> Requests Answers</td></tr>
+                            <tr class="font-medium py-2 text-center p-4 text-gray-200 bg-gray-900">
+                                <td colspan="8" class="p-2 rounded-tr-lg rounded-tl-lg"> Requests Answers</td>
+                            </tr>
                             <tr class="bg-green-600 shadow font-medium text-white border-l border-r border-gray-900">
                                 <td class="p-2 ml-2">Contract ID</td>
                                 <td class="p-2 ml-2">Client Name </td>
@@ -189,3 +193,9 @@ include_once('../resources/connection.php');
                     </div>
 
                 </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
