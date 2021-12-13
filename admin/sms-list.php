@@ -78,11 +78,11 @@ if ($_SESSION['usertype'] != 'admin') {
 				</div>
 			</div>
 
-			<div class="h-200 w-full px-16 mt-8 flex-wrap items-center justify-center">
+			<div style="height: 474px; overflow-y: scroll;" class="text-xs h-200 w-3/4 px-16 mt-8 flex-wrap items-center justify-center">
 
-				<table class="w-full" cellspacing="10">
-					<p class="font-bold">SMS Management</p>
-					<tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="6">
+				<table  class="w-full" cellspacing="10">
+					<tr class="font-bold text-xl text-center text-gray-200 text-shadow rounded-tr-lg rounded-tl-lg bg-red-600 font-white p-3 w-full"><td colspan="5"> SMS Management </td></tr>
+					<tr class="sticky top-0 bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md">
 						<th class="p-2"> ID </th>
 						<th class="p-2"> Phone_Number </th>
 						<th class="p-2"> Message</th>
@@ -90,10 +90,36 @@ if ($_SESSION['usertype'] != 'admin') {
 						<th class="p-2"> Resend </th>
 
 					</tr>
-					<tr class=" text-gray-900 p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="6">
-						<th class="p-2"> ID1 </th>
-						<th class="p-2"> Phone_Number1 </th>
-						<th class="p-2"> Message1</th>
-						<th class="p-2"> Status1</th>
-						<th class="p-2" colspan="2">resend </th>
-					</tr>
+					<?php
+						include_once('../resources/connection.php');
+
+						$query = "SELECT * from smsnotification"; // Fetch all the records from the table address
+						$result = mysqli_query($con, $query);
+
+						while ($array = mysqli_fetch_array($result)) {
+						?>
+							<tr class=" text-gray-900 p-2 border-b border-gray-900 rounded-r-md rounded-l-md">
+								<td class="p-2"><?php echo $array['id']; ?></td>
+								<td class="p-2"><?php echo $array['phone_number']; ?></td>
+								<td class="p-2"><?php echo $array['message']; ?></td>
+									<?php
+										$messageStatusColor = '';
+
+										if($array['status'] == "Sent"){
+											$messageStatusColor = "bg-green-600 text-white text-center w-16 py-1 px-2 rounded-lg";
+										} else {
+											$messageStatusColor = "bg-red-600 text-white text-center w-16 py-1 px-2 rounded-lg";
+										}
+									?>
+								<td class="p-2"><p class="<?php echo $messageStatusColor; ?>"><?php echo $array['status']; ?></p></td>
+								<td class="p-2"> <a href="re-send-sms.php?phone=<?php echo $array['phone_number']; ?>&message=<?php echo $array['message']; ?>" class="bg-green-600 text-white py-1 px-2 rounded-lg ">Resend</a>									
+							</tr>
+
+						<?php } ?>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
