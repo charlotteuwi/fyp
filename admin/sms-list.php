@@ -50,50 +50,50 @@ if ($_SESSION['usertype'] != 'admin') {
 
 
 						</div>
-						</a>
-					<a href="#">
-						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-							<p><i class="fas fa-file-alt"></i></p>
-							<p class="ml-2"> Reports</p>
+					</a>
+					<a href="sms-list.php">
+						<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-sms"></i></p>
+							<p class="ml-2"> SMS List </p>
 						</div>
-						</a>
-						<a href="view_request.php">
-							<div class="py-4 px-5 bg-white text-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
+					</a>
+					<a href="view_request.php">
+						<div class="py-4 px-5 bg-gray-800 text-white mt-2 flex hover:bg-white hover:text-gray-800 
 			        cusror-pointer border-b border-red-800 shadow-lg">
-								<p><i class="fas fa-comments"></i> Requests </p>
-							</div>
-						</a>
-						<a href="changepassword.php">
-							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-								<p><i class="fas fa-user-cog"></i></p>
-								<p class="ml-2"> Settings</p>
-							</div>
-						</a>
-						<a href="../logout.php">
-							<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-								<p><i class="fas fa-user-cog"></i></p>
-								<p class="ml-2"> Logout</p>
-							</div>
-						</a>
+							<p><i class="fas fa-comments"></i> Requests </p>
+						</div>
+					</a>
+					<a href="changepassword.php">
+						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-user-cog"></i></p>
+							<p class="ml-2"> Settings</p>
+						</div>
+					</a>
+					<a href="../logout.php">
+						<div class="py-4 px-5 bg-gray-800 text-white mt-2  flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+							<p><i class="fas fa-user-cog"></i></p>
+							<p class="ml-2"> Logout</p>
+						</div>
+					</a>
 				</div>
 			</div>
-			
+
 			<div class="h-200 w-full px-16 mt-8 flex-wrap items-center justify-center">
-				
-			<table class="w-full" cellspacing="10">
-			<p class="font-bold">Sms List</p>
+
+				<table class="w-full" cellspacing="10">
+					<p class="font-bold">SMS Management</p>
 					<tr class="bg-gray-900 text-white p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="6">
-						<th class="p-2">  ID </th>
+						<th class="p-2"> ID </th>
 						<th class="p-2"> Phone_Number </th>
 						<th class="p-2"> Message</th>
 						<th class="p-2"> Status </th>
-                        <th class="p-2"> Resend </th>
-					
+						<th class="p-2"> Resend </th>
+
 					</tr>
-                    <tr class=" text-gray-900 p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="6">
-						<th class="p-2">  ID1 </th>
+					<tr class=" text-gray-900 p-2 border-b border-gray-900 rounded-r-md rounded-l-md" colspan="6">
+						<th class="p-2"> ID1 </th>
 						<th class="p-2"> Phone_Number1 </th>
 						<th class="p-2"> Message1</th>
 						<th class="p-2"> Status1</th>
-                        <th class="p-2" colspan="2">resend </th>	
+						<th class="p-2" colspan="2">resend </th>
 					</tr>

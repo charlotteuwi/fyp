@@ -35,11 +35,13 @@
 
 						</div>
 
-						<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
-							<p><i class="fas fa-file-alt"></i></p>
-							<p class="ml-2"> Reports</p>
-						</div>
-						<a href="#">
+						<a href="sms-list.php">
+							<div class="py-4 px-5 bg-gray-800 text-white mt-2 flex hover:bg-white hover:text-gray-800 cursor-pointer border-b border-red-800 shadow-lg">
+								<p><i class="fas fa-file-signature"></i></p>
+								<p class="ml-2"> SMS List </p>
+							</div>
+						</a>
+						<a href="view_request.php">
 							<div class="py-4 px-5 bg-gray-800 mt-2 flex hover:bg-gray-100 hover:text-gray-800 
 			        cusror-pointer border-b border-red-800 shadow-lg">
 								<p><i class="fas fa-comments"></i> Requests </p>
@@ -61,7 +63,7 @@
 			</div>
 			<div class="p-8 w-full flex items-center justify-center bg-gray-300">
 				<div class="flex-wrap w-1/2 rounded bg-white shadow items-center justify-center text-xs">
-				<Div class=" bg-red-600 rounded px-4 py-1 w-100 text-white">
+					<Div class=" bg-red-600 rounded px-4 py-1 w-100 text-white">
 						<a href="add-contract.php">
 							<<< BACK </a>
 					</div>
@@ -109,7 +111,7 @@
 								<div class="w-1/2">Phone Number</div>
 								<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="phone_number" value="<?php echo $array['phone_number']; ?>" required="true"></div>
 							</div>
-							
+
 							<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
 								<div class="w-1/2">Address</div>
 								<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="address" value="<?php echo $array['address']; ?>" required="true"></div>
@@ -129,11 +131,11 @@
 								<div class="w-1/2">ISCO Supervisor</div>
 								<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="isco_supervisor" value="<?php echo $array['isco_supervisor']; ?>" required="true"></div>
 							</div>
-							
+
 							<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
 								<button type="submit" class="bg-green-600 text-white rounded shadow w-full px-4 py-2" name="update">Update Informatioon</button>
 							</div>
-							
+
 						</form>
 					<?php
 					} ?>
