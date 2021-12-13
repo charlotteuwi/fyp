@@ -64,62 +64,79 @@ include_once("../resources/connection.php");
 						</a>
 				</div>
 			</div>
-			<div>
-				<?php 
-				$id = $_GET['id'];
-				$query = "SELECT * FROM usercontracts WHERE id=$id";
-				$result = mysqli_query($con, $query);
-           
-				if ($result->num_rows > 0) {
-				   while($row = $result->fetch_assoc()) {
-					?>
-						<form action="employee-contract/update.php" method="POST">
-							<div class="row">
-								<div class="col "><input type="text" class="bg-gray-400 form-control" name="id" value="<?php echo $row['id']; ?>" required="true">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col"><input type="text" class="form-control" name="employee_name" value="<?php echo $row['employee_name']; ?>" required="true">
-								</div>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="phone_number" value="<?php echo $row['phone_number']; ?>" required="true">
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="address" value="<?php echo $row['address']; ?>" required="true">
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="description" value="<?php echo $row['description']; ?>" required="true">
-							</div>
-​
-​
-							<div class="form-group">
-								<input type="date" class="form-control" name="start_date" value="<?php echo $row['start_date']; ?>" required="true">
-							</div>
-							<div class="form-group">
-								<input type="date" class="form-control" name="end_date" value="<?php echo $row['end_date']; ?>" required="true">
-							</div>
-​
-							<div class="form-group">
-								<button type="submit" class="btn btn-success btn-lg btn-block" name="update">Update</button>
-							</div>
-						</form>
-​
-​
+			<div class="p-8 w-full flex items-center justify-center bg-gray-300">
+				<div class="flex-wrap w-1/2 rounded bg-white shadow items-center justify-center text-xs">
+				<Div class=" bg-red-600 rounded px-4 py-1 w-100 text-white">
+						<a href="add-contract.php">
+							<<< BACK </a>
+					</div>
+					<div class="font-bold bg-gray-900 w-full p-4 text-medium text-white text-center">Update Employee Information</div>
 					<?php
-					} ?>
+					$id = $_GET['id'];
+					$query = "SELECT * FROM usercontracts WHERE id=$id";
+					$result = mysqli_query($con, $query);
+
+					if ($result->num_rows > 0) {
+						while ($row = $result->fetch_assoc()) {
+					?>
+							<form action="employee-contract/update.php" method="POST">
+								<div class="w-full items-center justify-center flex gap-3 p-2 border-b border-red-600">
+									<div class="w-1/2">ID</div>
+									<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" readonly class="bg-gray-200 form-control" name="id" value="<?php echo $row['id']; ?>" required="true"></div>
+								</div>
+
+								<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+									<div class="w-1/2">Employee Name</div>
+									<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="employee_name" value="<?php echo $row['employee_name']; ?>" required="true"></div>
+								</div>
+
+								<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+									<div class="w-1/2">Phone Number</div>
+									<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="phone_number" value="<?php echo $row['phone_number']; ?>" required="true"></div>
+								</div>
+
+								<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+									<div class="w-1/2">Address</div>
+									<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="address" required value="<?php echo $row['address']; ?>"></div>
+								</div>
+
+								<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+									<div class="w-1/2">Description</div>
+									<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="description" value="<?php echo $row['description']; ?>" required="true"></div>
+								</div>
+
+								<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+									<div class="w-1/2">Start Date</div>
+									<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="date" class=" bg-gray-200 form-control" name="start_date" value="<?php echo $row['start_date']; ?>" required="true"></div>
+								</div>
+
+								<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+									<div class="w-1/2">End Date</div>
+									<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="date" class=" bg-gray-200 form-control" name="end_date" value="<?php echo $row['end_date']; ?>" required="true"></div>
+								</div>
+
+								<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+									<button type="submit" class="bg-green-600 text-white rounded shadow w-full px-4 py-2" name="update">Update Informatioon</button>
+								</div>
+							</form>
+							​
 				</div>
 			</div>
-
-					<?php
-				} else {
-				   printf('No record found.<br />');
-				}
-
-				?>
-			</div>
+			​
+		<?php
+						} ?>
 		</div>
 	</div>
+
+<?php
+					} else {
+						printf('No record found.<br />');
+					}
+
+?>
+</div>
+</div>
+</div>
 </body>
 
 </html>

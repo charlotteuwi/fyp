@@ -59,66 +59,86 @@
 						</a>
 				</div>
 			</div>
-			<div>
-			<div class="flex-wrap mx-80 mt-20">
-				<p class="font-bold">Update your info.</p>
-				<?php
-				//Database Connection
-				include_once('../resources/connection.php');
+			<div class="p-8 w-full flex items-center justify-center bg-gray-300">
+				<div class="flex-wrap w-1/2 rounded bg-white shadow items-center justify-center text-xs">
+				<Div class=" bg-red-600 rounded px-4 py-1 w-100 text-white">
+						<a href="add-contract.php">
+							<<< BACK </a>
+					</div>
+					<div class="font-bold bg-gray-900 w-full p-4 text-medium text-white text-center">Update Company Information</div>
+					<?php
+					//Database Connection
+					include_once('../resources/connection.php');
 
-				$id = $_GET['id'];
+					$id = $_GET['id'];
 
-				$query = "SELECT * FROM companycontracts WHERE id=$id";
-				$result = mysqli_query($con, $query);
+					$query = "SELECT * FROM companycontracts WHERE id=$id";
+					$result = mysqli_query($con, $query);
 
-				while ($array = mysqli_fetch_array($result)) {
-				?>
+					while ($array = mysqli_fetch_array($result)) {
+					?>
 
 
-					<form action="company-contract/update.php" method="POST">
-						Id<div class="row">
-							<div class="col "><input type="text" readonly class="bg-gray-200 form-control" name="id" value="<?php echo $array['id']; ?>" required="true">
+						<form action="company-contract/update.php" method="POST">
+							<div class="w-full items-center justify-center flex gap-3 p-2 border-b border-red-600">
+								<div class="w-1/2">ID</div>
+								<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" readonly class="bg-gray-200 form-control" name="id" value="<?php echo $array['id']; ?>" required="true"></div>
 							</div>
-						</div>
-						Company Name<div class="row">
-							<div class="col"><input type="text" class=" bg-gray-200 form-control" name="company_name" value="<?php echo $array['company_name']; ?>" required="true">
+
+							<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+								<div class="w-1/2">Company Name</div>
+								<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="company_name" value="<?php echo $array['company_name']; ?>" required="true"></div>
 							</div>
-						</div>
-						Tin Number<div class="form-group">
-							<input type="text" class=" bg-gray-200 form-control" name="tin_number" value="<?php echo $array['tin_number']; ?>" required="true">
-						</div>
 
-						Description<div class="form-group">
-							<input type="text" class=" bg-gray-200 form-control" name="description" value="<?php echo $array['description']; ?>" required="true">
-						</div>
-						Manager<div class="form-group">
-							<input type="text" class=" bg-gray-200 form-control" name="manager" value="<?php echo $array['manager']; ?>" required="true">
-						</div>
-						Phone Number<div class="form-group">
-							<input type="number" class=" bg-gray-200 form-control" name="phone_number" value="<?php echo $array['phone_number']; ?>" required="true">
-						</div>
-						Address<div class="form-group">
-							<input type="text" class=" bg-gray-200 form-control" name="address" value="<?php echo $array['address']; ?>" required="true">
-						</div>
-						Start Date<div class="form-group">
-							<input type="date" class=" bg-gray-200 form-control" name="start_date" value="<?php echo $array['start_date']; ?>" required="true">
-						</div>
-						End Date<div class="form-group">
-							<input type="date" class=" bg-gray-200 form-control" name="end_date" value="<?php echo $array['end_date']; ?>" required="true">
-						</div>
-						Isco Supervisor<div class="form-group">
-							<input type="text" class=" bg-gray-200 form-control" name="isco_supervisor" value="<?php echo $array['isco_supervisor']; ?>" required="true">
-						</div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-success btn-lg btn-block" name="update">Update</button>
-						</div>
-					</form>
+							<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+								<div class="w-1/2">TIN Number</div>
+								<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="tin_number" value="<?php echo $array['tin_number']; ?>" required="true"></div>
+							</div>
 
+							<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+								<div class="w-1/2">Description</div>
+								<div class="w-1/2"><textarea class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="description" required><?php echo $array['description']; ?></textarea></div>
+							</div>
 
-				<?php
-				} ?>
+							<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+								<div class="w-1/2">Manager</div>
+								<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="manager" value="<?php echo $array['manager']; ?>" required="true"></div>
+							</div>
+
+							<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+								<div class="w-1/2">Phone Number</div>
+								<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="phone_number" value="<?php echo $array['phone_number']; ?>" required="true"></div>
+							</div>
+							
+							<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+								<div class="w-1/2">Address</div>
+								<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="address" value="<?php echo $array['address']; ?>" required="true"></div>
+							</div>
+
+							<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+								<div class="w-1/2">Start Date</div>
+								<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="date" class=" bg-gray-200 form-control" name="start_date" value="<?php echo $array['start_date']; ?>" required="true"></div>
+							</div>
+
+							<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+								<div class="w-1/2">End Date</div>
+								<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="date" class=" bg-gray-200 form-control" name="end_date" value="<?php echo $array['end_date']; ?>" required="true"></div>
+							</div>
+
+							<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+								<div class="w-1/2">ISCO Supervisor</div>
+								<div class="w-1/2"><input class="p-2 bg-gray-100 border border-gray-900 rounded focus:outline-none" type="text" class=" bg-gray-200 form-control" name="isco_supervisor" value="<?php echo $array['isco_supervisor']; ?>" required="true"></div>
+							</div>
+							
+							<div class="w-full items-center justify-left flex gap-3 p-2 border-b border-red-600">
+								<button type="submit" class="bg-green-600 text-white rounded shadow w-full px-4 py-2" name="update">Update Informatioon</button>
+							</div>
+							
+						</form>
+					<?php
+					} ?>
+				</div>
 			</div>
-		</div>
 		</div>
 </body>
 

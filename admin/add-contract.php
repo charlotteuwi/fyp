@@ -90,7 +90,7 @@ if ($_SESSION['usertype'] != 'admin') {
 						</a>
 					</div>
 				</div>
-				<div class="flex w-full">
+				<div class="flex w-full text-xs">
 				<div style="height: 440px; overflow-y: scroll;" class="w-full bg-white px-4 flex-wrap items-center justify-center">
 					<table class="w-full" cellspacing="10">
 						<tr class="sticky top-0 bg-gray-900 text-white border-b border-gray-900 rounded-r-md rounded-l-md" colspan="4">
