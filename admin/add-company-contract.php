@@ -98,11 +98,11 @@ if ($_SESSION['usertype'] != 'admin') {
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">TIN Number (Only 9 Digits)</p>
-									<input class="w-full px-2 shadow rounded px-1 py-2" type="number" min=9 max=9 maxlength=9 name="tin_number" required="" placeholder="TIN Number">
+									<input class="w-full px-2 shadow rounded px-1 py-2" type="number" min="100000000" max="999999999" maxlength="9" name="tin_number" required="" placeholder="TIN Number">
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Description</p>
-									<textarea class="w-full px-2 shadow rounded px-1 py-2" name="description" required="" placeholder="Description"></textarea>
+									<textarea minlength="30" class="w-full px-2 shadow rounded px-1 py-2" name="description" required="" placeholder="Description"></textarea>
 								</div>
 								<div class="w-full mt-2">
 									<p class="text-xs mb-1">Manager</p>
